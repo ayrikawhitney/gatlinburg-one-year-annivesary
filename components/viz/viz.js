@@ -3,7 +3,8 @@
 
     angular.module('thanks-obama.viz', [
         'resizer',
-        'timeline'
+        'thanks-obama.timeline',
+        'thanks-obama.modal'
     ])
 
     .directive('viz', ['$timeout', function ($timeout) {

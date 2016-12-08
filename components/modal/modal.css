@@ -1,0 +1,113 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transform: scale(0);
+    z-index: 1;
+}
+
+.modal-container.open {
+    transform: scale(1);
+}
+
+.modal-container.close {
+    transform: scale(1);
+    animation: quickScaleDown 0s .5s linear forwards;
+}
+
+.modal-wrapper {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.modal-container.open .modal-wrapper {
+    background: transparent;
+    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-container.close .modal-wrapper {
+    background: transparent;
+    animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-container.open .modal-content {
+    animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-container.close .modal-content {
+    animation: moveDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-content-container {
+    padding: 20px;
+    width: 100vw;
+    max-width: 600px;
+    margin: auto;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    0% {
+        background: rgba(0, 0, 0, .0);
+    }
+    100% {
+        background: rgba(0, 0, 0, .7);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        background: rgba(0, 0, 0, .7);
+    }
+    100% {
+        background: rgba(0, 0, 0, .0);
+    }
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes quickScaleDown {
+    0% {
+        transform: scale(1);
+    }
+    99.9% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+}

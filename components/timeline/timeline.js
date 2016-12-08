@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module('timeline', [
+    angular.module('thanks-obama.timeline', [
         'utils'
     ])
 
