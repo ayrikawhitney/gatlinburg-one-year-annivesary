@@ -45,6 +45,7 @@
             {
                 date: new Date(2016, 0, 5),
                 title: 'You now know obama reads your tests',
+                subtitle: 'Snowden leaked information',
                 classes: 'red-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
@@ -53,6 +54,7 @@
             {
                 date: new Date(2016, 1, 5),
                 title: 'You now know obama reads your tests',
+                subtitle: 'Snowden leaked information',
                 classes: 'blue-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
@@ -61,6 +63,7 @@
             {
                 date: new Date(2016, 2, 5),
                 title: 'You now know obama reads your tests',
+                subtitle: 'Snowden leaked information',
                 classes: 'green-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
@@ -71,6 +74,7 @@
             {
                 date: new Date(2016, 10, 5),
                 title: 'You now know obama reads your tests',
+                subtitle: 'Snowden leaked information',
                 classes: 'blue-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
@@ -79,6 +83,7 @@
             {
                 date: new Date(2016, 11, 5),
                 title: 'You now know obama reads your tests',
+                subtitle: 'Snowden leaked information',
                 classes: 'green-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
@@ -87,6 +92,7 @@
         new_event = {
             date: new Date(2016, 1, 7),
             title: 'New event',
+            subtitle: 'Snowden leaked information',
             classes: 'green-background',
             image: 'https://placekitten.com/g/600/500',
             text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',

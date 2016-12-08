@@ -1,4 +1,3 @@
-/* TODO simplify colors */
 .timeline-container {
     position: relative;
     max-width: 1200px;
@@ -30,7 +29,7 @@
     padding: 15px;
     background: #efefef;
     margin-right: 20px;
-    margin-left: 60px;
+    margin-left: 66px;
     max-width: 700px;
 }
 
@@ -51,9 +50,8 @@
 .event-item-wrapper::after {
     content: '';
     position: absolute;
-    left: -40px;
+    left: -50px;
     top: 5px;
-    transform: translateX(-50%);
     width: 21px;
     height: 20px;
     border-radius: 50%;
@@ -72,49 +70,6 @@ time {
     margin-bottom: 8px;
 }
 
-
-
-/* TODO change to min widths */
-/*@media screen and (max-width: 900px) {*/
-    /*.event-item-wrapper {*/
-        /*width: 250px;*/
-    /*}*/
-
-    /*.event-item:nth-child(even) .event-item-wrapper {*/
-        /*left: -289px;*/
-    /*}*/
-/*}*/
-
-/*@media screen and (max-width: 600px) {*/
-    /*.event-item {*/
-        /*margin-left: 20px;*/
-    /*}*/
-
-    /*.event-item-wrapper {*/
-        /*width: calc(100vw - 91px);*/
-    /*}*/
-
-    /*.event-item:nth-child(even) .event-item-wrapper {*/
-        /*left: 45px;*/
-    /*}*/
-
-    /*.event-item:nth-child(even) .event-item-wrapper::before {*/
-        /*left: -12px;*/
-        /*border-width: 8px 12px 8px 0;*/
-        /*border-color: transparent #efefef transparent transparent;*/
-    /*}*/
-/*}*/
-/*@media (max-width: 960px) {*/
-    /*.event-item:nth-child(even) .event-item-wrapper {*/
-        /*left: 45px;*/
-    /*}*/
-
-    /*.event-item:nth-child(even) .event-item-wrapper::before {*/
-        /*left: -12px;*/
-        /*border-width: 8px 12px 8px 0;*/
-        /*border-color: transparent #efefef transparent transparent;*/
-    /*}*/
-/*}*/
 @media (min-width: 768px) {
     .timeline-line {
         left: 0;
@@ -136,7 +91,7 @@ time {
         right: -12px;
     }
     /* left event dot */
-    .event-item:nth-child(even) .event-item-wrapper::after {left: inherit;right: -60px;}
+    .event-item:nth-child(even) .event-item-wrapper::after {left: inherit;right: -50px;}
     /* right event */
     .event-item:nth-child(odd) .event-item-wrapper {
         margin-left: calc(50% + 40px);

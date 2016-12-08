@@ -6,6 +6,7 @@
                 <time>{{ event.date | date:mediumDate }}</time>
                 <div class="event-item-content">
                     <div class="event-item-title">{{ event.title }}</div>
+                    <div class="event-item-subtitle">{{ event.subtitle }}</div>
                     <div class="event-item-image-container" ng-if="event.image">
                         <img class="event-item-image" src="" ng-src="{{ event.image }}" />
                     </div>
