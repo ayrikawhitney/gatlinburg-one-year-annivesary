@@ -1,0 +1,10 @@
+/* time line styles */
+.blue-background .event-item-wrapper {
+    background: blue;
+}
+.red-background .event-item-wrapper {
+    background: red;
+}
+.green-background .event-item-wrapper {
+    background: green;
+}
