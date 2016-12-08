@@ -34,9 +34,8 @@
 
         _this.set_events();
 
-        $scope.button_click = function(button, event) {
-            button.event = event;
-            $scope.$emit('timeline-btn-click', button);
+        $scope.button_click = function(event, is_positive) {
+            $scope.$emit('timeline-btn-click', event, is_positive);
         };
 
     }])

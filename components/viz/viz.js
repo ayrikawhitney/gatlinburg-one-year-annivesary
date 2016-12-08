@@ -25,7 +25,7 @@
                     // if (window.Tracker) {
                     //     window.Tracker.track(el);
                     // }
-              gulp   }
+                }
                 if (window.Ads) {
                     // create new ads. Pass in app name.
                     new window.Ads(app_name);
@@ -35,88 +35,82 @@
     }])
 
     .controller('viz', ['$scope', '$timeout', '$timeline', function ($scope, $timeout, $timeline) {
-        $scope.$on('timeline-btn-click', function(e, button) {
-            // button is the button markup
-            // event available under button.event
-            console.log(button);
+        $scope.$on('timeline-btn-click', function(e, event, is_positive) {
+            console.log(event);
+            console.log(is_positive);
+
         });
 
         var events_set_1 = [
             {
                 date: new Date(2016, 0, 5),
-                markup: '' +
-                    '<p>Some kind of html markup</p>' +
-                    '',
+                title: 'You now know obama reads your tests',
                 classes: 'red-background',
-                buttons: [
-                    {
-                        markup: '<span>my button 1</span>',
-                        // can put whatever you want in here, doesn't have to be id
-                        id: '#thanksobama not nicely'
-                    },
-                    {
-                        markup: '<span>my button 2</span>',
-                        id: '#thanksobama nicely'
-                    }
-                ]
+                image: 'https://placekitten.com/g/600/500',
+                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
+                share: 'Thanks to obama, the nsa reads all my text messages'
             },
             {
                 date: new Date(2016, 1, 5),
-                markup: '' +
-                    '<p>Some kind of html markup</p>' +
-                    '',
-                classes: 'red-background'
+                title: 'You now know obama reads your tests',
+                classes: 'blue-background',
+                image: 'https://placekitten.com/g/600/500',
+                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
+                share: 'Thanks to obama, the nsa reads all my text messages'
             },
             {
                 date: new Date(2016, 2, 5),
-                markup: '' +
-                    '<p>Some kind of html markup</p>' +
-                    '',
-                classes: 'green-background'
+                title: 'You now know obama reads your tests',
+                classes: 'green-background',
+                image: 'https://placekitten.com/g/600/500',
+                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
+                share: 'Thanks to obama, the nsa reads all my text messages'
             }
         ],
         events_set_2 = [
             {
-                date: new Date(2016, 11, 5),
-                markup: '' +
-                    '<p>Some kind of html markup</p>' +
-                    '',
-                classes: 'red-background'
+                date: new Date(2016, 10, 5),
+                title: 'You now know obama reads your tests',
+                classes: 'blue-background',
+                image: 'https://placekitten.com/g/600/500',
+                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
+                share: 'Thanks to obama, the nsa reads all my text messages'
             },
             {
-                date: new Date(2016, 12, 5),
-                markup: '' +
-                    '<p>Some kind of html markup</p>' +
-                    '',
-                classes: 'blue-background'
-            }
+                date: new Date(2016, 11, 5),
+                title: 'You now know obama reads your tests',
+                classes: 'green-background',
+                image: 'https://placekitten.com/g/600/500',
+                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
+                share: 'Thanks to obama, the nsa reads all my text messages'            }
         ],
         new_event = {
             date: new Date(2016, 1, 7),
-            markup: '' +
-                '<p>Some kind of html markup</p>' +
-                '',
-            classes: 'red-background'
+            title: 'New event',
+            classes: 'green-background',
+            image: 'https://placekitten.com/g/600/500',
+            text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
+            share: 'Thanks to obama, the nsa reads all my text messages'
         };
 
-        console.info('adding events');
         $timeline.add_events(events_set_1);
         $timeline.add_events(events_set_2);
 
-        $timeout(function() {
-            console.info('adding an event');
-            $timeline.add_event(new_event);
-        }, 1000);
-
-        $timeout(function() {
-            console.info('removing event');
-            $timeline.remove_event(new_event);
-        }, 2000);
-
-        $timeout(function() {
-            console.info('removing events');
-            $timeline.remove_events(events_set_2);
-        }, 3000);
+        // Below demostrats additional functionality of the $timeline service
+        // $timeout(function() {
+        //     console.info('adding an event');
+        //     $timeline.add_event(new_event);
+        // }, 1000);
+        //
+        // $timeout(function() {
+        //     console.info('removing event');
+        //     $timeline.remove_event(new_event);
+        // }, 2000);
+        //
+        // $timeout(function() {
+        //     console.info('removing events');
+        //     $timeline.remove_events(events_set_2);
+        // }, 3000);
 
     }]);
 
