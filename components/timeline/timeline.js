@@ -66,33 +66,34 @@
             }
         };
 
-        this.remove_event = function(date) {
-            var events = [];
+        this.remove_event = function(event_to_remove) {
+            var remaining_events = [];
             for (var i=0; i<this.events.length; i+=1) {
                 var event = this.events[i];
-                if (event.date.getTime() !== date.getTime()) {
-                    events.push(event);
+                if (event.date.getTime() !== event_to_remove.date.getTime()) {
+                    remaining_events.push(event);
                 }
             }
-            this.events = events;
+            this.events = remaining_events;
             this.render();
         };
 
-        this.remove_events = function(dates) {
+        this.remove_events = function(events_to_remove) {
             var time_dates = [],
-                events = [];
+                remaining_events = [];
             // get array of timed dates
-            for (var i=0; i<dates.length; i+=1) {
-                time_dates.push(dates[i].getTime());
+            for (var i=0; i<events_to_remove.length; i+=1) {
+                var event_to_remove = events_to_remove[i];
+                time_dates.push(event_to_remove.date.getTime());
             }
             for (var j=0; j<this.events.length; j+=1) {
                 var event = this.events[j];
                 // date is not in timed dates
                 if (time_dates.indexOf(event.date.getTime()) === -1) {
-                    events.push(event);
+                    remaining_events.push(event);
                 }
             }
-            this.events = events;
+            this.events = remaining_events;
             this.render();
         };
 

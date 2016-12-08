@@ -41,8 +41,7 @@
             console.log(button);
         });
 
-        console.info('adding events');
-        $timeline.add_events([
+        var events_set_1 = [
             {
                 date: new Date(2016, 0, 5),
                 markup: '' +
@@ -74,7 +73,9 @@
                     '<p>Some kind of html markup</p>' +
                     '',
                 classes: 'green-background'
-            },
+            }
+        ],
+        events_set_2 = [
             {
                 date: new Date(2016, 11, 5),
                 markup: '' +
@@ -89,27 +90,32 @@
                     '',
                 classes: 'blue-background'
             }
-        ]);
+        ],
+        new_event = {
+            date: new Date(2016, 1, 7),
+            markup: '' +
+                '<p>Some kind of html markup</p>' +
+                '',
+            classes: 'red-background'
+        };
+
+        console.info('adding events');
+        $timeline.add_events(events_set_1);
+        $timeline.add_events(events_set_2);
 
         $timeout(function() {
             console.info('adding an event');
-            $timeline.add_event({
-                date: new Date(2016, 1, 7),
-                markup: '' +
-                    '<p>Some kind of html markup</p>' +
-                    '',
-                classes: 'red-background'
-            });
+            $timeline.add_event(new_event);
         }, 1000);
 
         $timeout(function() {
             console.info('removing event');
-            $timeline.remove_event(new Date(2016, 1, 7));
+            $timeline.remove_event(new_event);
         }, 2000);
 
         $timeout(function() {
             console.info('removing events');
-            $timeline.remove_events([new Date(2016, 0, 5), new Date(2016, 1, 5)]);
+            $timeline.remove_events(events_set_2);
         }, 3000);
 
     }]);
