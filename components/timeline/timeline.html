@@ -1,18 +1,21 @@
-<ul class="events-list">
-    <li class="event-item" ng-repeat="event in events track by $index" ng-class="event.classes">
-        <div class="event-item-wrapper">
-            <time>{{ event.date | date:mediumDate }}</time>
-            <div class="event-item-content">
-                <div class="event-item-title">{{ event.title }}</div>
-                <div class="event-item-image-container" ng-if="event.image">
-                    <img class="event-item-image" src="" ng-src="{{ event.image }}" />
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    <ul class="events-list">
+        <li class="event-item" ng-repeat="event in events track by $index" ng-class="event.classes">
+            <div class="event-item-wrapper">
+                <time>{{ event.date | date:mediumDate }}</time>
+                <div class="event-item-content">
+                    <div class="event-item-title">{{ event.title }}</div>
+                    <div class="event-item-image-container" ng-if="event.image">
+                        <img class="event-item-image" src="" ng-src="{{ event.image }}" />
+                    </div>
+                    <div class="event-item-text">{{ event.text }}</div>
                 </div>
-                <div class="event-item-text">{{ event.text }}</div>
+                <div class="event-item-buttons">
+                    <div class="event-btn" ng-click="button_click(event, true)">Positive</div>
+                    <div class="event-btn" ng-click="button_click(event, false)">Negative</div>
+                </div>
             </div>
-            <div class="event-item-buttons">
-                <div class="event-btn" ng-click="button_click(event, true)">Positive</div>
-                <div class="event-btn" ng-click="button_click(event, false)">Negative</div>
-            </div>
-        </div>
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>
