@@ -44,14 +44,18 @@
             $scope.modal_event = event;
             $scope.event_is_positive = is_positive;
             $scope.modal_open = true;
+            // enable sharing on isolated scope
             window.SharingTwitter.watch(sharing_el);
             window.SharingFacebook.watch(sharing_el);
         });
 
         $scope.$on('option-click', function(e, option) {
+            // the dropdown will add a checked property
+            // add events if options is checked
             if (option.checked) {
                 $timeline.add_events(option.value);
             }
+            // remove events if option is unchecked
             else {
                 $timeline.remove_events(option.value);
             }

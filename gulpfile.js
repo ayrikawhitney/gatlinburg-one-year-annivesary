@@ -193,7 +193,6 @@ gulp.task('build', function (callback) {
     // clean dist synchronously
     del.sync(['dist'], callback);
     runSequence(
-        'compile',
         ['js', 'css'],
         'html',
         callback);
