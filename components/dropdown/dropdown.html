@@ -1,0 +1,15 @@
+<div class="dropdown no-select" ng-class="{'active': open}" off-click='open = false'>
+    <div ng-click="open = !open" class="dropdown-button">
+        <span class="active-option-label option-label">I am...</span>
+    </div>
+    <div class="dropdown-options">
+        <ul role="listbox" class="dropdown-options-list" scroll-to-bottom="is_at_bottom">
+            <li ng-repeat="option in options" role="option" class="dropdown-option">
+                <label class="dropdown-item-label">
+                    <input class="dropdown-item-input" type="checkbox" ng-click="option_click(option)">{{ option.label }}
+                </label>
+            </li>
+        </ul>
+        <div class="fadeout" ng-hide="is_at_bottom"></div>
+    </div>
+</div>

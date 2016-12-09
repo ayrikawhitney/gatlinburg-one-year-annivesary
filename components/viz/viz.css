@@ -8,3 +8,14 @@
 .green-background .event-item-wrapper {
     background: green;
 }
+.yellow-background .event-item-wrapper {
+    background: yellow;
+}
+dropdown {
+    display: block;
+    margin: 50px auto;
+    max-width: 280px;
+}
+.header-title {
+    text-align: center;
+}
