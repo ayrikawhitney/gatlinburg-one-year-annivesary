@@ -8,7 +8,9 @@
     .directive('modal', [function () {
         return {
             scope: {
+                open: '=?'
             },
+            transclude: true,
             templateUrl: 'components/modal/modal.html',
             restrict: 'E',
             controller: 'modal',

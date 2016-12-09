@@ -1,4 +1,12 @@
 <div class="viz-container" resize-monitor>
-    <modal></modal>
+    <modal open="modal_open">
+        <div class="modal-share-text">{{ modal_event.share }}</div>
+        <div ng-if="event_is_positive">This is a positive event</div>
+        <div ng-if="!event_is_positive">This is a negative event</div>
+        <div class="modal-sharing">
+            <div class="" share-twitter share-text="{{ modal_event.share }}">Share on twitter</div>
+            <div class="" share-facebook share-text="{{ modal_event.share }}">Share on facebook</div>
+        </div>
+    </modal>
     <timeline ascending></timeline>
 </div>

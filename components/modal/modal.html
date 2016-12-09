@@ -1,9 +1,9 @@
-<div class="modal-click" ng-click="show_modal = true">CLICK ME</div>
-<div class="modal-container" ng-class="{'open': show_modal === true, 'close':  show_modal === false}">
+<div class="modal-container" ng-class="{'open': open === true, 'close':  open === false}">
     <div class="modal-wrapper">
         <div class="modal-content-container">
             <div class="modal-content">
-                <p ng-click="show_modal=false">Hello!</p>
+                <div class="modal-close" ng-click="open = false;">Close</div>
+                <ng-transclude class="modal-transclude-content"></ng-transclude>
             </div>
         </div>
     </div>

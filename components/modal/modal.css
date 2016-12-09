@@ -60,6 +60,37 @@
     padding: 20px;
 }
 
+.modal-close {
+    background: none;
+    padding: 12px 15px;
+    color: #003;
+    display: inline-block;
+    float: right;
+    font-weight: 300;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    right: 30px;
+    top: 20px;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    z-index: 4;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    background-color: rgba(0,0,0,0.3);
+}
+.modal-transclude-content {
+    clear: both;
+    display: block;
+}
+
 @keyframes fadeIn {
     0% {
         background: rgba(0, 0, 0, .0);

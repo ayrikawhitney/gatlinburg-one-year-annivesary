@@ -35,11 +35,15 @@
         };
     }])
 
-    .controller('viz', ['$scope', '$timeout', '$timeline', function ($scope, $timeout, $timeline) {
+    .controller('viz', ['$scope', '$timeout', '$timeline', '$element', function ($scope, $timeout, $timeline, $element) {
         $scope.$on('timeline-btn-click', function(e, event, is_positive) {
-            console.log(event);
-            console.log(is_positive);
-
+            var el = $element[0],
+                sharing_el = el.querySelector('.modal-sharing');
+            $scope.modal_event = event;
+            $scope.event_is_positive = is_positive;
+            $scope.modal_open = true;
+            window.SharingTwitter.watch(sharing_el);
+            window.SharingFacebook.watch(sharing_el);
         });
 
         var events_set_1 = [
@@ -50,7 +54,7 @@
                 classes: 'red-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'
+                share: 'Thanks to obama, the nsa reads all my text messages 1'
             },
             {
                 date: new Date(2016, 1, 5),
@@ -59,7 +63,7 @@
                 classes: 'blue-background',
                 image: 'https://placekitten.com/g/600/500',
                 text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'
+                share: 'Thanks to obama, the nsa reads all my text messages 2'
             },
             {
                 date: new Date(2016, 2, 5),
