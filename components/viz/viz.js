@@ -155,7 +155,7 @@
             share: 'Thanks to obama, the nsa reads all my text messages'
         };
 
-        $timeline.add_events(events_set_1);
+        // $timeline.add_events(events_set_1);
 
         // Below demostrats additional functionality of the $timeline service
         // $timeout(function() {

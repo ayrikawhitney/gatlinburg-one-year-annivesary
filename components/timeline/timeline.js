@@ -24,11 +24,14 @@
 
         this.set_events = function() {
             // sorts events based on desired order
-            $timeline.sort_events($scope.descending !== undefined);
-            $scope.events = $timeline.get_events();
+            $timeline.get_events().then(function(events) {
+                $scope.events = events;
+            });
+            // $timeline.sort_events($scope.descending !== undefined);
         };
 
         $scope.$on('events-change', function(e, events) {
+            console.log('events-change', events);
             _this.set_events();
         });
 
@@ -40,13 +43,18 @@
 
     }])
 
-    .service('$timeline', ['$rootScope', function ($rootScope) {
+    .service('$timeline', ['$rootScope', '$q', '$http', '$interval', function ($rootScope, $q, $http, $interval) {
+
+
+        var self = this,
+            is_fetching = false;
 
         this.events = [];
 
+        this.filters = ['default'];
+
         this.render = function() {
-            console.log(this.events);
-            $rootScope.$broadcast('events-change', this.events);
+            $rootScope.$broadcast('events-change', this.get_filtered_events());
         };
 
         this.add_event = function(event) {
@@ -96,10 +104,6 @@
             this.render();
         };
 
-        this.get_events = function() {
-            return this.events;
-        };
-
         this.sort_events = function(use_descending) {
             // ascending 1/1/2000 will sort ahead of 1/1/2001
             var ascending = function(a,b) {
@@ -119,6 +123,100 @@
                 },
                 sorter = use_descending ? descending : ascending;
             this.events.sort(sorter);
+        }
+
+        this.add_filter = function(new_filter) {
+            if (this.filters.indexOf(new_filter) < 0) {
+                this.filters.push(new_filter)
+                this.render();
+            }
+        }
+        
+        this.to_UTC_date = function(date){
+            return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        };
+
+        this.generate_events = function(response) {
+            var events = response.data;
+            // ensure order
+            events = events.sort(function(a, b) {
+                if(a.date < b.date) return -1;
+                if(a.date > b.date) return 1;
+            });
+            // create date objects
+            for (var i=0; i<events.length; i+=1) {
+                var event = events[i];
+                // dates are inserted on UTC time. Dates should not be converted to local time.
+                event.date = this.to_UTC_date(new Date(event.date));
+                event.id = i;
+                var split_tags = event.tags.split(',');
+                event.tags = [];
+                for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
+                    var tag = split_tags[tag_i];
+                    event.tags.push(tag.trim());
+                }
+            }
+            return events;
+        };
+
+        this.get_filtered_events = function() {
+            return self.events.filter(function(event) {
+                for (var i = 0; i < event.tags.length; i++) {
+                    var eventTag = event.tags[i];
+                    //if any event tags are present in the filters, return true
+                    if (self.filters.indexOf(eventTag) > -1) {
+                        return true;
+                    }
+                    //check if eventTag is combo-tag, and check for BOTH
+                    if (eventTag.indexOf('-') > -1) {
+                        var comboTagArray = eventTag.split('-');
+                        var result = true;
+                        for (var tag_i = 0; tag_i < comboTagArray.length; tag_i++) {
+                            var comboTag = comboTagArray[tag_i];
+                            if (self.filters.indexOf(comboTag) < 0) {
+                                result = false;
+                            }
+                        }
+                        return result;
+                    }
+                }
+                return false;
+            });
+        }
+
+        this.get_events = function() {
+            var deferred = $q.defer();
+            // data is available, immediately resolve
+            if (this.events.length > 0) {
+                deferred.resolve(this.get_filtered_events);
+            }
+            // wait for data to get fetched
+            else {
+                self.fetch('/data/events.json').then(function(events) {
+                    self.events = events;
+                    deferred.resolve(self.get_filtered_events());
+                })
+            }
+            return deferred.promise;
+        };
+
+        this.fetch = function(url) {
+            var deferred = $q.defer();
+            if (!is_fetching) {
+                is_fetching = true;
+                $http({
+                    method: 'GET',
+                    url: url
+                }).then(function (response) {
+                    is_fetching = false;
+                    // sort data
+                    var events = self.generate_events(response);
+                    deferred.resolve(events);
+                }, function () {
+                    console.warn('Unable to get data for ');
+                });
+            }
+            return deferred.promise;
         }
 
     }]);
