@@ -1,0 +1,14 @@
+.event-detail-wrap {
+    background: white;
+    position: fixed;
+    top: 60px;
+    z-index: 150;
+}
+
+.event-detail-close-button {
+    border: solid 1px grey;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+}

@@ -5,7 +5,8 @@
         'resizer',
         'thanks-obama.timeline',
         'thanks-obama.modal',
-        'thanks-obama.dropdown'
+        'thanks-obama.dropdown',
+        'thanks-obama.eventDetail'
     ])
 
     .directive('viz', ['$timeout', function ($timeout) {
@@ -37,6 +38,7 @@
     }])
 
     .controller('viz', ['$scope', '$timeout', '$timeline', '$element', function ($scope, $timeout, $timeline, $element) {
+        var _this = this;
 
         $scope.$on('timeline-btn-click', function(e, event, is_positive) {
             var el = $element[0],
@@ -62,101 +64,16 @@
             }
         });
 
-        var events_set_1 = [
-            {
-                date: new Date(2016, 0, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'red-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages 1'
-            }
-        ],
-        events_set_2 = [
-            {
-                date: new Date(2016, 1, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'blue-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages 2'
-            },
-            {
-                date: new Date(2016, 2, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'blue-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'
-            },
-            {
-                date: new Date(2016, 10, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'blue-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'
-            },
-            {
-                date: new Date(2016, 11, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'green-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'            }
-        ],
-        events_set_3 = [
-            {
-                date: new Date(2016, 7, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'
-            },
-            {
-                date: new Date(2016, 8, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'            }
-        ],
-        events_set_4 = [
-            {
-                date: new Date(2016, 9, 5),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'yellow-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'
-            },
-            {
-                date: new Date(2016, 4, 15),
-                title: 'You now know obama reads your tests',
-                subtitle: 'Snowden leaked information',
-                classes: 'yellow-background',
-                image: 'https://placekitten.com/g/600/500',
-                text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-                share: 'Thanks to obama, the nsa reads all my text messages'            }
-        ],
-        new_event = {
-            date: new Date(2016, 1, 7),
-            title: 'New event',
-            subtitle: 'Snowden leaked information',
-            classes: 'green-background',
-            image: 'https://placekitten.com/g/600/500',
-            text: 'We need to dialog around your choice of work attire what\'s the status on the deliverables for eow? meeting assassin data-point, yet this vendor is incompetent quick-win drop-dead date.',
-            share: 'Thanks to obama, the nsa reads all my text messages'
-        };
+        $scope.$on('event-click', function(e, event) {
+            console.log('event-click', event);
+            _this.set_details(event);
+        });
 
-        // $timeline.add_events(events_set_1);
+        $scope.detail = null;
+
+        this.set_details = function(event) {
+            $scope.detail = event;
+        }
 
         // Below demostrats additional functionality of the $timeline service
         // $timeout(function() {
@@ -175,7 +92,6 @@
         // }, 3000);
         //
         $scope.$on('events_set', function(e, events) {
-            console.log(events);
             var all_tags = [];
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
@@ -206,46 +122,5 @@
                 };
             });
         });
-        
-        // $scope.dropdown_options = [
-        //     {
-        //         label: 'Green',
-        //         value: 'green'
-        //     },
-        //     {
-        //         label: 'One',
-        //         value: 'one'
-        //     },
-        //     {
-        //         label: 'Alien',
-        //         value: events_set_4
-        //     },
-        //     {
-        //         label: 'Something 2',
-        //         value: []
-        //     },
-        //     {
-        //         label: 'Something 3',
-        //         value: []
-        //     },
-        //     {
-        //         label: 'Something 4',
-        //         value: []
-        //     },
-        //     {
-        //         label: 'Something 5',
-        //         value: []
-        //     },
-        //     {
-        //         label: 'Something 6',
-        //         value: []
-        //     },
-        //     {
-        //         label: 'Something 7',
-        //         value: []
-        //     }
-        // ];
-
     }]);
-
 })(window.angular);

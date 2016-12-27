@@ -19,7 +19,7 @@
     }])
 
     // see https://docs.angularjs.org/api/ng/filter/date for date formatting
-    .controller('timeline', ['$scope', '$timeline', function ($scope, $timeline) {
+    .controller('timeline', ['$rootScope', '$scope', '$timeline', function ($rootScope, $scope, $timeline) {
         var _this = this;
 
         this.set_events = function() {
@@ -42,7 +42,7 @@
         };
 
         $scope.event_click = function(event) {
-            console.log(event);
+            $rootScope.$broadcast('event-click', event);
         };
 
     }])
