@@ -41,6 +41,10 @@
             $scope.$emit('timeline-btn-click', event, is_positive);
         };
 
+        $scope.event_click = function(event) {
+            console.log(event);
+        };
+
     }])
 
     .service('$timeline', ['$rootScope', '$q', '$http', '$interval', function ($rootScope, $q, $http, $interval) {
@@ -132,6 +136,14 @@
             }
         }
         
+        this.remove_filter = function(filter) {
+            var filter_index = this.filters.indexOf(filter)
+            if (filter_index >= 0) {
+                this.filters.splice(filter_index, 1);
+                this.render();
+            }
+        }
+        
         this.to_UTC_date = function(date){
             return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
         };
@@ -188,12 +200,13 @@
             var deferred = $q.defer();
             // data is available, immediately resolve
             if (this.events.length > 0) {
-                deferred.resolve(this.get_filtered_events);
+                deferred.resolve(this.get_filtered_events());
             }
             // wait for data to get fetched
             else {
                 self.fetch('/data/events.json').then(function(events) {
                     self.events = events;
+                    $rootScope.$broadcast('events_set', events);
                     deferred.resolve(self.get_filtered_events());
                 })
             }
@@ -215,7 +228,7 @@
                 }, function () {
                     console.warn('Unable to get data for ');
                 });
-            }
+            }             
             return deferred.promise;
         }
 

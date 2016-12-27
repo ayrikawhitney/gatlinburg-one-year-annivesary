@@ -53,11 +53,12 @@
             // the dropdown will add a checked property
             // add events if options is checked
             if (option.checked) {
-                $timeline.add_events(option.value);
+                console.log(option);
+                $timeline.add_filter(option.value);
             }
             // remove events if option is unchecked
             else {
-                $timeline.remove_events(option.value);
+                $timeline.remove_filter(option.value);
             }
         });
 
@@ -172,45 +173,78 @@
         //     console.info('removing events');
         //     $timeline.remove_events(events_set_2);
         // }, 3000);
+        //
+        $scope.$on('events_set', function(e, events) {
+            console.log(events);
+            var all_tags = [];
+            for (var i = 0; i < events.length; i++) {
+                var event = events[i];
+                var new_tags = [];
+                angular.forEach(event.tags, function(tag) {
+                    if(tag != 'default' && tag.indexOf('-') < 0) {
+                        new_tags.push(tag)
+                     } else if (tag.indexOf('-') >= 0) {
+                        var split_tag_array = tag.split('-');
+                        angular.forEach(split_tag_array, function(split_tag) {
+                            new_tags.push(split_tag);
+                        });
+                     } else {
+                        new_tags.push(null);
+                     }
+                 });
 
-        $scope.dropdown_options = [
-            {
-                label: 'Male',
-                value: events_set_2
-            },
-            {
-                label: 'Female',
-                value: events_set_3
-            },
-            {
-                label: 'Alien',
-                value: events_set_4
-            },
-            {
-                label: 'Something 2',
-                value: []
-            },
-            {
-                label: 'Something 3',
-                value: []
-            },
-            {
-                label: 'Something 4',
-                value: []
-            },
-            {
-                label: 'Something 5',
-                value: []
-            },
-            {
-                label: 'Something 6',
-                value: []
-            },
-            {
-                label: 'Something 7',
-                value: []
+                 angular.forEach(new_tags, function(tag) {
+                    if (tag && all_tags.indexOf(tag) < 0) {
+                        all_tags.push(tag);
+                    }
+                 });
             }
-        ];
+            $scope.dropdown_options = all_tags.map(function(tag) {
+                return {
+                    label: tag,
+                    value: tag
+                };
+            });
+        });
+        
+        // $scope.dropdown_options = [
+        //     {
+        //         label: 'Green',
+        //         value: 'green'
+        //     },
+        //     {
+        //         label: 'One',
+        //         value: 'one'
+        //     },
+        //     {
+        //         label: 'Alien',
+        //         value: events_set_4
+        //     },
+        //     {
+        //         label: 'Something 2',
+        //         value: []
+        //     },
+        //     {
+        //         label: 'Something 3',
+        //         value: []
+        //     },
+        //     {
+        //         label: 'Something 4',
+        //         value: []
+        //     },
+        //     {
+        //         label: 'Something 5',
+        //         value: []
+        //     },
+        //     {
+        //         label: 'Something 6',
+        //         value: []
+        //     },
+        //     {
+        //         label: 'Something 7',
+        //         value: []
+        //     }
+        // ];
 
     }]);
 
