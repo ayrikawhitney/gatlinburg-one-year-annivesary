@@ -55,7 +55,6 @@
             // the dropdown will add a checked property
             // add events if options is checked
             if (option.checked) {
-                console.log(option);
                 $timeline.add_filter(option.value);
             }
             // remove events if option is unchecked
@@ -65,7 +64,6 @@
         });
 
         $scope.$on('event-click', function(e, event) {
-            console.log('event-click', event);
             _this.set_details(event);
         });
 

@@ -25,7 +25,10 @@
             $scope.event = null;
         };
 
-        console.log($scope);
+        $scope.set_sentiment = function(sentiment) {
+            $scope.event.sentiment = sentiment;
+        }
+
 
     }]);
 

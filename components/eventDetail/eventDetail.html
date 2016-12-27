@@ -1,8 +1,12 @@
-<div class="event-detail-wrap">
+<div class="event-detail-wrap event-detail-wrap-{{event.sentiment}}" >
     <div class="event-detail-close-button" ng-click="close_click()">Close</div>
     <time>{{ event.date | date:mediumDate }}</time>
     <h2 class="event-detail-headline">{{event.title}}</h2>
     <h3 class="event-detail-sub-head">{{event.subtitle}}</h3>
     <img class="event-detail-image" src="{{event.image}}" alt="">
     <p class="event-detail-text">{{event.text}}</p>
+    <div class="event-detail-sentiment-wrap">
+        <div class="event-detail-sentiment-button event-detail-sentiment-button-positive" ng-click="set_sentiment('positive')">Thanks (positive)</div>
+        <div class="event-detail-sentiment-button event-detail-sentiment-button-negative" ng-click="set_sentiment('negative')">Thanks (negative)</div>
+    </div>
 </div>

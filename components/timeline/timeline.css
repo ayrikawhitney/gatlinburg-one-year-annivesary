@@ -32,6 +32,14 @@
     margin-left: 66px;
     max-width: 700px;
 }
+.event-item-wrapper.negative {
+    background: red;
+    color:white
+}
+.event-item-wrapper.positive {
+    background: blue;
+    color:white
+}
 
 /* event arrow */
 .event-item-wrapper::before {

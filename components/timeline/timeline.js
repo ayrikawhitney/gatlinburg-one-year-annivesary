@@ -161,12 +161,15 @@
                 // dates are inserted on UTC time. Dates should not be converted to local time.
                 event.date = this.to_UTC_date(new Date(event.date));
                 event.id = i;
+                //split comma-seperated tags into an array
                 var split_tags = event.tags.split(',');
                 event.tags = [];
                 for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
                     var tag = split_tags[tag_i];
                     event.tags.push(tag.trim());
                 }
+                //set default sentiment to null
+                event.sentiment = null
             }
             return events;
         };

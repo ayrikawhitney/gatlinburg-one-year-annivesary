@@ -3,6 +3,21 @@
     position: fixed;
     top: 60px;
     z-index: 150;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 800px;
+    width: 90%;
+}
+
+.event-detail-wrap.event-detail-wrap-positive {
+    background: blue;
+    color: white;
+}
+
+.event-detail-wrap.event-detail-wrap-negative {
+    background: red;
+    color: white;
 }
 
 .event-detail-close-button {
@@ -11,4 +26,23 @@
     cursor: pointer;
     display: inline-block;
     padding: 5px;
+}
+
+.event-detail-sentiment-wrap {
+    display: flex;
+}
+
+.event-detail-sentiment-button {
+    color: white;
+    text-align: center;
+    width: 50%;
+    padding: 20px;
+}
+
+.event-detail-sentiment-button-positive {
+    background: blue;
+}
+
+.event-detail-sentiment-button-negative {
+    background: red;
 }
