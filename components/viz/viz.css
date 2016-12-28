@@ -19,3 +19,7 @@ dropdown {
 .header-title {
     text-align: center;
 }
+
+body.noscroll { 
+    overflow: hidden;
+}

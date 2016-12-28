@@ -42,6 +42,7 @@
         };
 
         $scope.event_click = function(event) {
+            document.querySelector('body').classList.add('noscroll')
             $rootScope.$broadcast('event-click', event);
         };
 
@@ -164,9 +165,18 @@
                 //split comma-seperated tags into an array
                 var split_tags = event.tags.split(',');
                 event.tags = [];
+                event.clean_tags = [];
                 for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
                     var tag = split_tags[tag_i];
                     event.tags.push(tag.trim());
+                    if (tag.indexOf('-') >= 0) {
+                        var comboTagArray = tag.split('-');
+                        for (var combo_i = 0; combo_i < comboTagArray.length; combo_i++) {
+                            event.clean_tags.push(comboTagArray[combo_i].trim())
+                        }
+                    } else {
+                        event.clean_tags.push(tag);
+                    }
                 }
                 //set default sentiment to null
                 event.sentiment = null

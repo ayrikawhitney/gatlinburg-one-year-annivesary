@@ -23,6 +23,7 @@
         var _this = this;
 
         $scope.close_click = function() {
+            document.querySelector('body').classList.remove('noscroll')
             $scope.event = null;
         };
 
