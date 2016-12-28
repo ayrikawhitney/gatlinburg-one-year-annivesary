@@ -6,16 +6,10 @@
                 <time>{{ event.date | date:mediumDate }}</time>
                 <div class="event-item-content">
                     <div class="event-item-title">{{ event.title }}</div>
-                    <!-- <div class="event&#45;item&#45;subtitle">{{ event.subtitle }}</div> -->
-                    <!-- <div class="event&#45;item&#45;image&#45;container" ng&#45;if="event.image"> -->
-                    <!--     <img class="event&#45;item&#45;image" src="" ng&#45;src="{{ event.image }}" /> -->
-                    <!-- </div> -->
-                    <!-- <div class="event&#45;item&#45;text">{{ event.text }}</div> -->
+                    <div class="event-item-footer">
+                        <img class="event-item-footer-arrow" src="assets/img/arrow-down-grey.png" alt="open">
+                    </div>
                 </div>
-                <!-- <div class="event&#45;item&#45;buttons"> -->
-                <!--     <div class="event&#45;btn" ng&#45;click="button_click(event, true)">Positive</div> -->
-                <!--     <div class="event&#45;btn" ng&#45;click="button_click(event, false)">Negative</div> -->
-                <!-- </div> -->
             </div>
         </li>
     </ul>

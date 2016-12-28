@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('thanks-obama.eventDetail', [
-        'utils'
+        'utils',
+        'social-buttons'
     ])
 
     .directive('eventDetail', [function () {
