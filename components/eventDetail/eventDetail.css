@@ -16,7 +16,7 @@
     position: absolute;
     top: 60px;
     z-index: 150;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
     left: 50%;
     overflow-y: auto;
     padding: 20px 0;
@@ -100,7 +100,7 @@
 .event-detail-inner-wrap.event-detail-wrap-positive .event-detail-sentiment-button-negative {
     overflow: hidden;
     width: 0px;
-    padding: 0;
+    padding: 20px 0;
 }
 
 .event-detail-inner-wrap.event-detail-wrap-negative .event-detail-sentiment-button-negative {
@@ -110,7 +110,7 @@
 .event-detail-inner-wrap.event-detail-wrap-negative .event-detail-sentiment-button-positive {
     overflow: hidden;
     width: 0px;
-    padding: 0;
+    padding: 20px 0;
 }
 
 .event-detail-sentiment-reset {

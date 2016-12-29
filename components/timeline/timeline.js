@@ -189,6 +189,9 @@
                 for (var i = 0; i < event.tags.length; i++) {
                     var eventTag = event.tags[i];
                     //if any event tags are present in the filters, return true
+                    if (eventTag.indexOf('!') == 0) {
+                        return self.filters.indexOf(eventTag.substr(1)) == -1;
+                    }
                     if (self.filters.indexOf(eventTag) > -1) {
                         return true;
                     }
@@ -198,7 +201,12 @@
                         var result = true;
                         for (var tag_i = 0; tag_i < comboTagArray.length; tag_i++) {
                             var comboTag = comboTagArray[tag_i];
-                            if (self.filters.indexOf(comboTag) < 0) {
+                            if (comboTag.indexOf('!') == 0) {
+                                if (result == true) {
+                                    result = self.filters.indexOf(comboTag.substr(1)) < 0;
+                                }
+                            }
+                            else if (self.filters.indexOf(comboTag) < 0) {
                                 result = false;
                             }
                         }

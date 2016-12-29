@@ -22,6 +22,7 @@
         console.log($scope);
 
         $scope.option_click = function(option) {
+            console.log(option);
             option.checked = !option.checked;
             $scope.$emit('option-click', option)
         };

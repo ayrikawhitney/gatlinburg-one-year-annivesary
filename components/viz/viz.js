@@ -95,12 +95,14 @@
                 var event = events[i];
                 var new_tags = [];
                 angular.forEach(event.tags, function(tag) {
-                    if(tag != 'default' && tag.indexOf('-') < 0) {
+                    if(tag != 'default' && tag.indexOf('-') < 0 && tag.indexOf('!') !== 0) {
                         new_tags.push(tag)
                      } else if (tag.indexOf('-') >= 0) {
                         var split_tag_array = tag.split('-');
                         angular.forEach(split_tag_array, function(split_tag) {
-                            new_tags.push(split_tag);
+                            if (split_tag.indexOf('!') !== 0) {
+                                new_tags.push(split_tag);
+                            }
                         });
                      } else {
                         new_tags.push(null);
