@@ -172,10 +172,12 @@
                     if (tag.indexOf('-') >= 0) {
                         var comboTagArray = tag.split('-');
                         for (var combo_i = 0; combo_i < comboTagArray.length; combo_i++) {
-                            event.clean_tags.push(comboTagArray[combo_i].trim())
+                            if (comboTagArray[combo_i].indexOf('!') != 0) {
+                                event.clean_tags.push(comboTagArray[combo_i].trim())
+                            }
                         }
-                    } else {
-                        event.clean_tags.push(tag);
+                    } else if (tag.trim().indexOf('!') != 0){
+                        event.clean_tags.push(tag.trim());
                     }
                 }
                 //set default sentiment to null
@@ -201,7 +203,9 @@
                         var result = true;
                         for (var tag_i = 0; tag_i < comboTagArray.length; tag_i++) {
                             var comboTag = comboTagArray[tag_i];
+                            //check to see if tag is a 'NOT' tag
                             if (comboTag.indexOf('!') == 0) {
+                                //if result from previous combos is true, check for 'NOT' tag's prescence in current filters
                                 if (result == true) {
                                     result = self.filters.indexOf(comboTag.substr(1)) < 0;
                                 }
@@ -249,7 +253,7 @@
                 }, function () {
                     console.warn('Unable to get data for ');
                 });
-            }             
+            }
             return deferred.promise;
         }
 

@@ -14,7 +14,7 @@
 dropdown {
     display: block;
     margin: 50px auto;
-    max-width: 280px;
+    /* max-width: 280px; */
 }
 .header-title {
     text-align: center;

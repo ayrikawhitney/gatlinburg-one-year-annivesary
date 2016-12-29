@@ -118,7 +118,8 @@
             $scope.dropdown_options = all_tags.map(function(tag) {
                 return {
                     label: tag,
-                    value: tag
+                    value: tag,
+                    checked: false
                 };
             });
         });

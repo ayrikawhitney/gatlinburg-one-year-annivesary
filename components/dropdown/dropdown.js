@@ -19,9 +19,9 @@
     .controller('dropdown', ['$scope', function($scope) {
 
         var self = this;
-        console.log($scope);
 
         $scope.option_click = function(option) {
+            console.log($scope.options);
             console.log(option);
             option.checked = !option.checked;
             $scope.$emit('option-click', option)

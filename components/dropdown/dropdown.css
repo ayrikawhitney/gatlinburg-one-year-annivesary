@@ -4,6 +4,7 @@
 }
 
 .dropdown-button {
+    color: white;
     cursor: pointer;
     display: block;
     line-height: 40px;
@@ -18,10 +19,11 @@
     text-overflow: ellipsis;
     height: 40px;
     overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.5);
+    /* border: 1px solid rgba(0,0,0,0.5); */
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-    background: #F5F5F5;
-    background: linear-gradient(#F5F5F5, #EEEEEE);
+    /* background: #F5F5F5; */
+    background: #009BFF;
+    /* background: linear-gradient(#F5F5F5, #EEEEEE); */
 }
 
 .dropdown-button:after {
@@ -40,16 +42,18 @@
     width: 100%;
     background-color: #fff;
     cursor: default;
+    left: 50%;
     list-style: none;
     line-height: 26px;
     overflow: hidden;
-    margin: 0;
     height: 0;
+    max-width: 600px;
     max-height: 60vh;
+    margin: 0 auto;
     z-index: 1003;
     position: absolute;
     padding: 0;
-    transform: translateY(-26%);
+    transform: translate(-50%, -26%);
     transition: all 200ms cubic-bezier(0.35, 0, 0.25, 1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
 }
@@ -73,10 +77,38 @@
     border-bottom: 1px solid #ccc;
 }
 
+.dropdown-option-tag {
+    border: solid 1px #bcbcbc;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.dropdown-go-button {
+    background: #009BFF;
+    border-radius: 3px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    padding: 5px;
+    text-transform: uppercase;
+    width: 60px;
+}
+
+.dropdown-option-tag.option-checked {
+    background: #bcbcbc;
+}
+
 
 .dropdown.active .dropdown-options {
     height: 50vh;
-    transition: all 200ms cubic-bezier(0.35, 0, 0.25, 1);
+    padding: 20px;
+    transition: height 200ms cubic-bezier(0.35, 0, 0.25, 1);
 }
 .dropdown-button,
 .option-label {
@@ -120,7 +152,7 @@
 
 @media (min-width: 480px) {
     .dropdown.active .dropdown-options {
-        height: 300px;
+        /* height: 300px; */
     }
 }
 

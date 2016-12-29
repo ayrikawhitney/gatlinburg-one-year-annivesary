@@ -3,12 +3,19 @@
         <span class="active-option-label option-label">I am...</span>
     </div>
     <div class="dropdown-options">
-        <ul role="listbox" class="dropdown-options-list" scroll-to-bottom="is_at_bottom">
-            <li ng-repeat="option in options" role="option" class="dropdown-option">
-                <label class="dropdown-item-label">
-                    <input class="dropdown-item-input" type="checkbox" ng-click="option_click(option)">{{ option.label }}
-                </label>
-            </li>
+        <h3 class="dropdown-text">Select groups you identify with</h3>
+        <div class="dropdown-options-wrap"  scroll-to-bottom="is_at_bottom">
+            <div ng-repeat="option in options" class="dropdown-option-tag" ng-class="{'option-checked': option.checked}" ng-click="option_click(option)">
+                {{ option.label }}
+            </div>
+        </div>
+        <div class="dropdown-go-button" ng-click="open = false">Go</div>
+        <!-- <ul role="listbox" class="dropdown&#45;options&#45;list" scroll&#45;to&#45;bottom="is_at_bottom"> -->
+        <!--     <li ng&#45;repeat="option in options" role="option" class="dropdown&#45;option"> -->
+        <!--         <label class="dropdown&#45;item&#45;label"> -->
+        <!--             <input class="dropdown&#45;item&#45;input" type="checkbox" ng&#45;click="option_click(option)">{{ option.label }} -->
+        <!--         </label> -->
+        <!--     </li> -->
         </ul>
         <div class="fadeout" ng-hide="is_at_bottom"></div>
     </div>
