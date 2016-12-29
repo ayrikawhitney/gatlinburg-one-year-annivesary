@@ -76,9 +76,13 @@
 .event-detail-sentiment-button {
     color: white;
     cursor: pointer;
+    display: inline-block;
+    flex: none;
+    margin: 0;
     text-align: center;
     width: 50%;
     padding: 20px;
+    transition: width 250ms ease;
 }
 
 .event-detail-sentiment-button-positive {
@@ -87,6 +91,32 @@
 
 .event-detail-sentiment-button-negative {
     background: #E82319;
+}
+
+.event-detail-inner-wrap.event-detail-wrap-positive .event-detail-sentiment-button-positive {
+    width: 100%;
+}
+
+.event-detail-inner-wrap.event-detail-wrap-positive .event-detail-sentiment-button-negative {
+    overflow: hidden;
+    width: 0px;
+    padding: 0;
+}
+
+.event-detail-inner-wrap.event-detail-wrap-negative .event-detail-sentiment-button-negative {
+    width: 100%;
+}
+
+.event-detail-inner-wrap.event-detail-wrap-negative .event-detail-sentiment-button-positive {
+    overflow: hidden;
+    width: 0px;
+    padding: 0;
+}
+
+.event-detail-sentiment-reset {
+    cursor: pointer;
+    text-align: center;
+    padding: 20px;
 }
 
 .event-detail-sharing-wrap {
