@@ -4,12 +4,12 @@
     margin: auto;
 }
 .timeline-line {
-    background: #000;
+    background: #bcbcbc;
     position: absolute;
     top: 0;
     left: 22px;
     bottom: 0;
-    width: 8px;
+    width: 2px;
 }
 .events-list {
     padding: 30px 0;
@@ -25,6 +25,7 @@
 
 /* arrow */
 .event-item-wrapper {
+    background: white;
     border-radius: 3px;
     border: solid 1px #bcbcbc;
     position: relative;
@@ -69,12 +70,12 @@
 .event-item-wrapper::after {
     content: '';
     position: absolute;
-    left: -50px;
+    left: -49px;
     top: 5px;
-    width: 21px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: #000;
+    background: #bcbcbc;
 }
 
 .event-item-image {
@@ -116,7 +117,7 @@ time {
     /* left event arrow */
     .event-item:nth-child(even) .event-item-wrapper::before {
         border-width: 8px 0 8px 12px;
-        border-color: transparent transparent transparent #000;
+        border-color: transparent transparent transparent #bcbcbc;
         left: inherit;
         right: -12px;
     }
@@ -127,8 +128,16 @@ time {
     .event-item:nth-child(even) .event-item-wrapper.positive::before {
         border-color: transparent transparent transparent #009BFF;
     }
+    /* right event dot */
+    .event-item:nth-child(odd) .event-item-wrapper::after {
+        left: -46px;
+    }
     /* left event dot */
-    .event-item:nth-child(even) .event-item-wrapper::after {left: inherit;right: -50px;}
+    .event-item:nth-child(even) .event-item-wrapper::after {
+        left: inherit;
+        right: -46px;
+    }
+
     /* right event */
     .event-item:nth-child(odd) .event-item-wrapper {
         margin-left: calc(50% + 40px);

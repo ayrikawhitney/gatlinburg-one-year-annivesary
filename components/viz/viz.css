@@ -23,3 +23,17 @@ dropdown {
 body.noscroll { 
     overflow: hidden;
 }
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+.viz-container {
+    background: #f6f6f6;
+    /* background: white; */
+    min-height: 100vh;
+    overflow: auto;
+}
+

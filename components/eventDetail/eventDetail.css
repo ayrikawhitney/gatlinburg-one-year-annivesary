@@ -21,6 +21,7 @@
     overflow-y: auto;
     padding: 20px 0;
     transform: translate(-50%, 0);
+    transition: all 250ms ease;
     max-width: 600px;
     width: 90%;
 }
@@ -52,6 +53,7 @@
 .event-detail-background-wrap {
     background: rgba(255, 255, 255, 0.8);
     bottom: 0;
+    cursor: pointer;
     position: fixed;
     top: 0;
     left: 0;
@@ -120,9 +122,18 @@
 }
 
 .event-detail-sharing-wrap {
-    color: white;
+    background: white;
+    color: #3e3e3e;
     margin: 20px auto;
+    max-height: 0;
+    overflow: hidden;
+    padding-bottom: 20px;
     text-align: center;
+    transition: max-height 250ms ease;
+}
+
+.event-detail-sharing-wrap.sharing-active {
+    max-height: 120px;
 }
 
 .event-detail-tag-wrap {
@@ -137,4 +148,9 @@
     padding: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
+}
+
+.event-detail-inner-wrap.event-detail-wrap-negative .event-detail-tag, .event-detail-inner-wrap.event-detail-wrap-positive .event-detail-tag {
+    background: white;
+    color: #3e3e3e;
 }

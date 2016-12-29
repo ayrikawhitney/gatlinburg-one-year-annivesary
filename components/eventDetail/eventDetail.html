@@ -16,7 +16,7 @@
             <div class="event-detail-sentiment-button event-detail-sentiment-button-negative" ng-click="set_sentiment('negative')">Thanks (negative)</div>
         </div>
             <div class="event-detail-sentiment-reset" ng-click="set_sentiment(null)" ng-if="event.sentiment">Change</div>
-        <div class="event-detail-sharing-wrap" ng-if="event.sentiment">
+            <div class="event-detail-sharing-wrap" ng-class="{ 'sharing-active': event.sentiment }">
             <h3 class="event-detail-sharing-text">Share your thanks:</h3>
             <social-buttons facebook twitter email></social-buttons>
         </div>

@@ -229,7 +229,7 @@
             }
             // wait for data to get fetched
             else {
-                self.fetch('/data/events.json').then(function(events) {
+                self.fetch('data/events.json').then(function(events) {
                     self.events = events;
                     $rootScope.$broadcast('events_set', events);
                     deferred.resolve(self.get_filtered_events());
