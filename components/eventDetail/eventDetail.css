@@ -128,7 +128,8 @@
 .event-detail-sentiment-reset {
     cursor: pointer;
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
+    text-decoration: underline;
 }
 
 .event-detail-sharing-wrap {

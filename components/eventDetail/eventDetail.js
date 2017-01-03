@@ -2,8 +2,7 @@
     'use strict';
 
     angular.module('thanks-obama.eventDetail', [
-        'utils',
-        'social-buttons'
+        'utils'
     ])
 
     .directive('eventDetail', [function () {
@@ -14,7 +13,22 @@
             templateUrl: 'components/eventDetail/eventDetail.html',
             restrict: 'E',
             controller: 'eventDetail',
-            link: function ($scope, $element, $attr) {}
+            link: function ($scope, $element, $attr) {
+                console.log('link', $scope);
+                var el = $element[0];
+                if (window.SharingTwitter) {
+                    window.SharingTwitter.watch(el);
+                }
+                if (window.SharingFacebook) {
+                    window.SharingFacebook.watch(el);
+                }
+                if (window.SharingEmail) {
+                    window.SharingEmail.watch(el);
+                }
+                if (window.Tracker) {
+                    window.Tracker.track(el);
+                }
+            }
         };
     }])
 
@@ -29,6 +43,11 @@
 
         $scope.set_sentiment = function(sentiment) {
             $scope.event.sentiment = sentiment;
+            if (sentiment == 'positive') {
+                $scope.event.share_text = 'Thanks Obama 👍: ' + $scope.event.headline;
+            } else if (sentiment == 'negative') {
+                $scope.event.share_text = 'Thanks Obama 👎: ' + $scope.event.headline;
+            }
         }
 
 
