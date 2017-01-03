@@ -169,8 +169,8 @@
                 for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
                     var tag = split_tags[tag_i];
                     event.tags.push(tag.trim());
-                    if (tag.indexOf('-') >= 0) {
-                        var comboTagArray = tag.split('-');
+                    if (tag.indexOf('&') >= 0) {
+                        var comboTagArray = tag.split('&');
                         for (var combo_i = 0; combo_i < comboTagArray.length; combo_i++) {
                             if (comboTagArray[combo_i].indexOf('!') != 0) {
                                 event.clean_tags.push(comboTagArray[combo_i].trim())
@@ -198,8 +198,8 @@
                         return true;
                     }
                     //check if eventTag is combo-tag, and check for BOTH
-                    if (eventTag.indexOf('-') > -1) {
-                        var comboTagArray = eventTag.split('-');
+                    if (eventTag.indexOf('&') > -1) {
+                        var comboTagArray = eventTag.split('&');
                         var result = true;
                         for (var tag_i = 0; tag_i < comboTagArray.length; tag_i++) {
                             var comboTag = comboTagArray[tag_i];
