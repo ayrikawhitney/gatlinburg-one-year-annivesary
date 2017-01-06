@@ -97,6 +97,13 @@
     transition: width 250ms ease;
 }
 
+.event-detail-sentiment-button-logo {
+    display: block;
+    width: 90%;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
 .event-detail-sentiment-button-positive {
     background: #009BFF;
 }

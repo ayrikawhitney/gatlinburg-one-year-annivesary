@@ -37,3 +37,9 @@ body {
     overflow: auto;
 }
 
+.header-title {
+    width:80%;
+    max-width: 350px;
+    margin: 30px auto;
+}
+

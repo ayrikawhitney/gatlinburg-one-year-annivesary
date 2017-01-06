@@ -106,6 +106,15 @@ time {
     margin-bottom: 8px;
 }
 
+.event-item-sentiment {
+    margin: 10px auto;
+    width: 50px;
+}
+
+.event-item-sentiment img {
+    width: 100%;
+}
+
 @media (min-width: 768px) {
     .timeline-line {
         left: 0;
