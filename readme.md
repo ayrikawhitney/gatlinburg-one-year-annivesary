@@ -21,7 +21,7 @@ npm run deploy
 ```
 
 ## Content
-convert content file (thanks_obama_content.xslsx) by running:
+convert content file (thanks_obama_content.csv) by running:
 ```
-./convert-content.sh
+npm run csvtojson
 ```

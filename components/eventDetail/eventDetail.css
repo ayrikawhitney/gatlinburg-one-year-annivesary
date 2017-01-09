@@ -57,6 +57,7 @@
 .event-detail-image {
     display: block;
     width: 100%;
+    margin: auto;
 }
 
 .event-detail-background-wrap {
@@ -142,7 +143,7 @@
 .event-detail-sharing-wrap {
     background: white;
     color: #3e3e3e;
-    margin: 20px auto;
+    margin: 20px auto 0;
     max-height: 0;
     overflow: hidden;
     text-align: center;

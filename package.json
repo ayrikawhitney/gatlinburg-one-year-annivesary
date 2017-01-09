@@ -10,7 +10,8 @@
     "deploy-assets": "gulp deploy-assets",
     "start": "lite-server",
     "compile": "babel charts --out-dir components/charts",
-    "compile-watch": "babel charts --watch --out-dir components/charts"
+    "compile-watch": "babel charts --watch --out-dir components/charts",
+    "csvtojson": "csvtojson data/thanks_obama_content.csv > data/events.json"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "cssmin": "^0.4.3",
+    "csvtojson": "^1.1.2",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",

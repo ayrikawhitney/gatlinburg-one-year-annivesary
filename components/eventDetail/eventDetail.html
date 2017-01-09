@@ -7,7 +7,7 @@
             <h2 class="event-detail-headline">{{event.headline}}</h2>
             <h3 class="event-detail-sub-head">{{event.sub_headline}}</h3>
         </div>
-        <img class="event-detail-image" src="{{event.image}}" alt="">
+        <img class="event-detail-image" src="{{event.asset + '.jpg'}}" alt="">
         <div class="event-detail-content">
             <p class="event-detail-text">{{event.blurb}}</p>
         </div>
@@ -23,7 +23,7 @@
                 <div track="twitter-share" share-text="{{event.share_text}}" share-twitter class="icons-social-twitter share-btn-twitter share-btn"></div>
             </div>
         </div>
-        <div class="event-detail-content">
+        <div class="event-detail-content" ng-if="event.tags.indexOf('default') === -1">
             <h3 class="event-detail-tag-text">Affected groups:</h3>
             <div class="event-detail-tag-wrap">
                 <div class="event-detail-tag" ng-repeat="tag in event.clean_tags" ng-if="tag!='default'">{{tag}}</div>
