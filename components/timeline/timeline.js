@@ -62,53 +62,6 @@
             $rootScope.$broadcast('events-change', this.get_filtered_events());
         };
 
-        this.add_event = function(event) {
-            if (event) {
-                this.events.push(event);
-                this.sort_events();
-                this.render();
-            }
-        };
-
-        this.add_events = function(events) {
-            if (events && events.length > 0) {
-                this.events = this.events.concat(events);
-                this.sort_events();
-                this.render();
-            }
-        };
-
-        this.remove_event = function(event_to_remove) {
-            var remaining_events = [];
-            for (var i=0; i<this.events.length; i+=1) {
-                var event = this.events[i];
-                if (event.date.getTime() !== event_to_remove.date.getTime()) {
-                    remaining_events.push(event);
-                }
-            }
-            this.events = remaining_events;
-            this.render();
-        };
-
-        this.remove_events = function(events_to_remove) {
-            var time_dates = [],
-                remaining_events = [];
-            // get array of timed dates
-            for (var i=0; i<events_to_remove.length; i+=1) {
-                var event_to_remove = events_to_remove[i];
-                time_dates.push(event_to_remove.date.getTime());
-            }
-            for (var j=0; j<this.events.length; j+=1) {
-                var event = this.events[j];
-                // date is not in timed dates
-                if (time_dates.indexOf(event.date.getTime()) === -1) {
-                    remaining_events.push(event);
-                }
-            }
-            this.events = remaining_events;
-            this.render();
-        };
-
         this.sort_events = function(use_descending) {
             // ascending 1/1/2000 will sort ahead of 1/1/2001
             var ascending = function(a,b) {
@@ -128,22 +81,22 @@
                 },
                 sorter = use_descending ? descending : ascending;
             this.events.sort(sorter);
-        }
+        };
 
         this.add_filter = function(new_filter) {
             if (this.filters.indexOf(new_filter) < 0) {
-                this.filters.push(new_filter)
+                this.filters.push(new_filter);
                 this.render();
             }
-        }
+        };
         
         this.remove_filter = function(filter) {
-            var filter_index = this.filters.indexOf(filter)
+            var filter_index = this.filters.indexOf(filter);
             if (filter_index >= 0) {
                 this.filters.splice(filter_index, 1);
                 this.render();
             }
-        }
+        };
         
         this.to_UTC_date = function(date){
             return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());

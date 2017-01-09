@@ -71,24 +71,8 @@
 
         this.set_details = function(event) {
             $scope.detail = event;
-        }
+        };
 
-        // Below demostrats additional functionality of the $timeline service
-        // $timeout(function() {
-        //     console.info('adding an event');
-        //     $timeline.add_event(new_event);
-        // }, 1000);
-        //
-        // $timeout(function() {
-        //     console.info('removing event');
-        //     $timeline.remove_event(new_event);
-        // }, 2000);
-        //
-        // $timeout(function() {
-        //     console.info('removing events');
-        //     $timeline.remove_events(events_set_2);
-        // }, 3000);
-        //
         $scope.$on('events_set', function(e, events) {
             var all_tags = [];
             for (var i = 0; i < events.length; i++) {

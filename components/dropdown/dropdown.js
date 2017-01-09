@@ -27,26 +27,6 @@
             $scope.$emit('option-click', option)
         };
 
-    }])
-
-    .directive('scrollToBottom', ['$timeout', function ($timeout) {
-        return {
-            restrict: 'A',
-            link: function ($scope, $element, $attrs) {
-                $timeout(function () {
-                    $element[0].addEventListener('scroll', function () {
-                        if (this.scrollTop + this.clientHeight === this.scrollHeight) {
-                            $scope[$attrs.scrollToBottom] = true;
-                            $scope.$apply();
-                        }
-                        else {
-                            $scope[$attrs.scrollToBottom] = false;
-                            $scope.$apply();
-                        }
-                    });
-                }, 100);
-            }
-        };
     }]);
 
 })(window.angular);
