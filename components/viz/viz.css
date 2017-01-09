@@ -13,7 +13,7 @@
 }
 dropdown {
     display: block;
-    margin: 50px auto;
+    margin: 0 auto 50px;
     /* max-width: 280px; */
 }
 .header-title {
@@ -30,16 +30,23 @@ body {
     overflow: auto;
 }
 
-.viz-container {
+.viz-wrapper {
     background: #f6f6f6;
-    /* background: white; */
     min-height: 100vh;
     overflow: auto;
 }
 
+.viz-container {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
 .header-title {
     width:80%;
     max-width: 350px;
-    margin: 30px auto;
+    margin: 40px auto;
 }
+
+.header-description {margin: 40px 0;font-size: 1.3rem;}
 

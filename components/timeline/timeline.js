@@ -42,7 +42,7 @@
         };
 
         $scope.event_click = function(event) {
-            document.querySelector('body').classList.add('noscroll')
+            document.querySelector('body').classList.add('noscroll');
             $rootScope.$broadcast('event-click', event);
         };
 
@@ -172,7 +172,7 @@
                 }
                 return false;
             });
-        }
+        };
 
         this.get_events = function() {
             var deferred = $q.defer();

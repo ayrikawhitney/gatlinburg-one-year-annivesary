@@ -1,5 +1,8 @@
-<div class="viz-container" resize-monitor>
-    <h1 class="header-title"><img src="assets/img/full-logo.svg" alt="Thanks Obama" class="header-logo"></h1>
+<div class="viz-wrapper" resize-monitor>
+    <div class="viz-container">
+        <h1 class="header-title"><img src="assets/img/full-logo.svg" alt="Thanks Obama" class="header-logo"></h1>
+        <p class="header-description">This proposal is a win-win situation which will cause a stellar paradigm shift, and produce a multi-fold increase in deliverables into the weeds. Tbrand terrorists get six alpha pups in here for a focus group, or globalize, but shelfware bench mark UI, but we need distributors to evangelize the new line to local markets.</p>
+    </div>
     <modal open="modal_open">
         <div class="modal-share-text">{{ modal_event.share }}</div>
         <div ng-if="event_is_positive">This is a positive event</div>
@@ -11,6 +14,8 @@
         </div>
     </modal>
     <dropdown options="dropdown_options"></dropdown>
-    <timeline ascending></timeline>
+    <div class="viz-container">
+        <timeline ascending></timeline>
+    </div>
     <event-detail  ng-class="{'fade-in': detail}" event="detail"></event-detail>
 </div>
