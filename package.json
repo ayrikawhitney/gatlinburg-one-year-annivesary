@@ -11,7 +11,7 @@
     "start": "lite-server",
     "compile": "babel charts --out-dir components/charts",
     "compile-watch": "babel charts --watch --out-dir components/charts",
-    "csvtojson": "csvtojson data/thanks_obama_content.csv > data/events.json"
+    "csvtojson": "node data/process.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
     "lite-server": "^2.2.2",
+    "request": "^2.79.0",
     "run-sequence": "^1.2.2",
     "vinyl-ftp": "^0.5.0"
   },

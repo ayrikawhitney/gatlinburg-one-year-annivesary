@@ -37,6 +37,7 @@
         };
     }])
 
+    // TODO allow for hyperlinks in main timeline description
     .controller('viz', ['$scope', '$timeout', '$timeline', '$element', function ($scope, $timeout, $timeline, $element) {
         var _this = this;
 

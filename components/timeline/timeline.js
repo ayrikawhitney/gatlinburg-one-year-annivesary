@@ -134,7 +134,7 @@
                     }
                 }
                 //set default sentiment to null
-                event.sentiment = null
+                event.sentiment = null;
             }
             return events;
         };
