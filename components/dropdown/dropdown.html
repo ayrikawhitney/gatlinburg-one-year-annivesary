@@ -5,7 +5,7 @@
     <div class="dropdown-options">
         <h3 class="dropdown-text">Select groups you identify with</h3>
         <div class="dropdown-options-wrap">
-            <div ng-repeat="option in options" class="dropdown-option-tag" ng-class="{'option-checked': option.checked}" ng-click="option_click(option)">
+            <div ng-repeat="option in options" on-repeat-finish class="dropdown-option-tag" ng-class="{'option-checked': option.checked}" ng-click="option_click(option)" track="{{ 'option-' + option.label}}">
                 {{ option.label }}
             </div>
         </div>

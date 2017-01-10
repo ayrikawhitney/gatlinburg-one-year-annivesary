@@ -31,7 +31,6 @@
         };
 
         $scope.$on('events-change', function(e, events) {
-            console.log('events-change', events);
             _this.set_events();
         });
 
