@@ -5,7 +5,7 @@
         'utils'
     ])
 
-    .directive('timeline', [function () {
+    .directive('timeline', ['$timeout', function ($timeout) {
         return {
             scope: {
                 ascending: '@',
@@ -14,7 +14,14 @@
             templateUrl: 'components/timeline/timeline.html',
             restrict: 'E',
             controller: 'timeline',
-            link: function ($scope, $element, $attr) {}
+            link: function ($scope, $element, $attr) {
+                $scope.$on('repeatFinish', function() {
+                    if (window.Tracker) {
+                        // track any elements with track attribute
+                        Tracker.track($element[0]);
+                    }
+                });
+            }
         };
     }])
 

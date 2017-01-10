@@ -1,7 +1,7 @@
 <div class="timeline-container">
     <div class="timeline-line"></div>
     <ul class="events-list">
-        <li class="event-item" ng-repeat="event in events track by $index" ng-class="event.classes" ng-click="event_click(event)">
+        <li class="event-item" on-repeat-finish ng-repeat="event in events track by $index" ng-class="event.classes" track="event-click" ng-click="event_click(event)">
             <div class="event-item-wrapper {{event.sentiment}}">
                 <time>{{ event.date | date:mediumDate }}</time>
                 <div class="event-item-content">

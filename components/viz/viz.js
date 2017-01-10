@@ -4,7 +4,6 @@
     angular.module('thanks-obama.viz', [
         'resizer',
         'thanks-obama.timeline',
-        'thanks-obama.modal',
         'thanks-obama.dropdown',
         'thanks-obama.eventDetail'
     ])
