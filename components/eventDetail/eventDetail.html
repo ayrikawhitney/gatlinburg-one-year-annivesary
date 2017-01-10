@@ -6,11 +6,10 @@
             <time>{{ event.date | date:mediumDate }}</time>
             <h2 class="event-detail-headline">{{event.headline}}</h2>
             <h3 class="event-detail-sub-head">{{event.sub_headline}}</h3>
-            <h1>image = {{ event.image }}</h1>
         </div>
         <img ng-if="event.image" class="event-detail-image" src="" ng-src="{{ event.image }}" alt="">
-        <div class="event-detail-content">
-            <p class="event-detail-text">{{event.blurb}}</p>
+        <div class="event-detail-content" ng-if="event.blurb">
+            <p class="event-detail-text" ng-bind-html="event.blurb | safeHtml"></p>
         </div>
         <div class="event-detail-sentiment-wrap">
             <div class="event-detail-sentiment-button event-detail-sentiment-button-positive" ng-click="set_sentiment('positive')"><img class="event-detail-sentiment-button-logo" src="assets/img/positive-logo-white.svg" alt="Thanks Obama (positive)"></div>
