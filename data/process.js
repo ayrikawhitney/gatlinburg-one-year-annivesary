@@ -4,7 +4,7 @@ const fs = require('fs');
 const async = require('async');
 
 const csv_path = 'data/thanks_obama_content.csv';
-const json_path = 'data/events.json';
+const json_path = 'assets/data/events.json';
 const word_path = "data/Blurbs.docx";
 
 async.waterfall([
@@ -12,12 +12,12 @@ async.waterfall([
         console.log('Converting csv to json');
         csv_to_json.convert_to_json(csv_path, callback);
     },
-    // function(csv_json, callback) {
-    //     console.log('Fetching json assets');
-    //     csv_to_json.fetch_assets(csv_json, callback);
-    // },
     function(csv_json, callback) {
-        console.log('Converting docx to json');
+        console.log('Fetching json assets');
+        csv_to_json.fetch_assets(csv_json, callback);
+    },
+    function(csv_json, callback) {
+        console.log('Extracting blurbs from docx');
         word_to_json.convert_docx_to_json(word_path, function(word_json) {
             callback(null, csv_json, word_json);
         });
@@ -50,5 +50,3 @@ async.waterfall([
 ], function(err, results) {
     console.log('Error', err);
 });
-
-// TODO grab blurps from text/word document?

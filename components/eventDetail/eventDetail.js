@@ -14,7 +14,7 @@
             restrict: 'E',
             controller: 'eventDetail',
             link: function ($scope, $element, $attr) {
-                console.log('link', $scope);
+                // console.log('link', $scope);
                 var el = $element[0];
                 if (window.SharingTwitter) {
                     window.SharingTwitter.watch(el);

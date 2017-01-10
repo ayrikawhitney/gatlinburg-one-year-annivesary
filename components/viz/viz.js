@@ -17,7 +17,7 @@
             controller: 'viz',
             link: function ($scope, $element, $attr) {
                 var el = $element[0],
-                    app_name = 'police-chases';
+                    app_name = 'thanks-obmama';
                 if (window.Analytics) {
                     window.Analytics.setup(app_name, {
                         // page views are handled with route success
@@ -29,15 +29,14 @@
                     //     window.Tracker.track(el);
                     // }
                 }
-                if (window.Ads) {
-                    // create new ads. Pass in app name.
-                    new window.Ads(app_name);
-                }
+                // if (window.Ads) {
+                //     // create new ads. Pass in app name.
+                //     new window.Ads(app_name);
+                // }
             }
         };
     }])
 
-    // TODO allow for hyperlinks in main timeline description
     .controller('viz', ['$scope', '$timeout', '$timeline', '$element', function ($scope, $timeout, $timeline, $element) {
         var _this = this;
 
