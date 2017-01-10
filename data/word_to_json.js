@@ -15,22 +15,11 @@ module.exports = {
             function(html, callback) {
                 console.log('Converting to json assets');
                 var json = _this.convert_html_to_json(html);
-                complete_callback(null, _this.generate_array(json));
+                complete_callback(json);
             }
         ], function(err, results) {
             console.log('Error', err);
         });
-    },
-
-    generate_array: function(obj) {
-        var keys = Object.keys(obj),
-            arr = [];
-        for (var i = 0; i < keys.length; i += 1) {
-            var key = keys[i],
-                property = obj[key];
-            arr.push(property);
-        }
-        return arr;
     },
 
     convert_docx_to_html: function (path, callback) {
@@ -44,7 +33,7 @@ module.exports = {
             }
             callback(null, html);
         })
-            .done();
+        .done();
     },
 
     find_obj_placeholder: function (obj, placeholder = '@') {
