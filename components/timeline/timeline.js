@@ -122,7 +122,7 @@
                 event.date = this.to_UTC_date(new Date(event.date));
                 event.id = i;
                 //split comma-seperated tags into an array
-                var split_tags = event.tags.split(',');
+                var split_tags = event.tags.split(';');
                 event.tags = [];
                 event.clean_tags = [];
                 for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
