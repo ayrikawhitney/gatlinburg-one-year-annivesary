@@ -31,6 +31,7 @@
         };
     }])
 
+    //    TODO need to fix scrolling fixed fade background
     // see https://docs.angularjs.org/api/ng/filter/date for date formatting
     .controller('eventDetail', ['$scope', function ($scope) {
         var _this = this;

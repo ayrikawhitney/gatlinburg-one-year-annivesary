@@ -14,8 +14,8 @@
                     <p class="event-detail-text" ng-bind-html="event.blurb | safeHtml"></p>
                 </div>
                 <div class="event-detail-sentiment-wrap">
-                    <div class="event-detail-sentiment-button event-detail-sentiment-button-positive" ng-click="set_sentiment('positive')" track="btn-sentiment-positive"><img class="event-detail-sentiment-button-logo" src="assets/img/positive-logo-white.svg" alt="Thanks Obama (positive)"></div>
-                    <div class="event-detail-sentiment-button event-detail-sentiment-button-negative" ng-click="set_sentiment('negative')" track="btn-sentiment-negative"><img class="event-detail-sentiment-button-logo" src="assets/img/negative-logo-white.svg" alt="Thanks Obama (negative)"></div>
+                    <div class="event-detail-sentiment-button event-detail-sentiment-button-positive" ng-click="set_sentiment('positive')" track="btn-sentiment-positive"><img class="event-detail-sentiment-button-logo" src="assets/img/logo-positive-white.png" alt="Thanks Obama (positive)"></div>
+                    <div class="event-detail-sentiment-button event-detail-sentiment-button-negative" ng-click="set_sentiment('negative')" track="btn-sentiment-negative"><img class="event-detail-sentiment-button-logo" src="assets/img/logo-negative-white.png" alt="Thanks Obama (negative)"></div>
                 </div>
                     <div class="event-detail-sentiment-reset" ng-click="set_sentiment(null)" ng-if="event.sentiment">Change</div>
                     <div class="event-detail-sharing-wrap" ng-class="{ 'sharing-active': event.sentiment }">
