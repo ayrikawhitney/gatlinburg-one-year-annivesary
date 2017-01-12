@@ -177,6 +177,7 @@
 .event-detail-text {
     font-family: Georgia, serif;
     font-size: 16px;
+    margin: 16px 0;
 }
 
 .event-detail-tag {
