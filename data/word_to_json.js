@@ -73,13 +73,18 @@ module.exports = {
                 text = text.replace(new RegExp("“", 'g'), '"');
                 text = text.replace(new RegExp("”", 'g'), '"');
                 // convert text to json
-                text_json = JSON.parse(text);
-                if (text_json.id) {
-                    json[text_json.id] = text_json;
-                    property_placeholder = _this.find_obj_placeholder(text_json);
-                    if (property_placeholder) {
-                        fetch_next_line = true;
+                try {
+                    text_json = JSON.parse(text);
+                    if (text_json.id) {
+                        json[text_json.id] = text_json;
+                        property_placeholder = _this.find_obj_placeholder(text_json);
+                        if (property_placeholder) {
+                            fetch_next_line = true;
+                        }
                     }
+                }
+                catch (e) {
+                    console.log('unable to parse "' + text + '"');
                 }
             }
         }
