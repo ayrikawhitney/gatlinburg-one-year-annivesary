@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="event-detail-content" ng-if="event.tags.indexOf('default') === -1">
-                    <h3 class="event-detail-tag-text">Affected groups:</h3>
+                    <h3 class="event-detail-tag-text">Affected descriptors:</h3>
                     <div class="event-detail-tag-wrap">
                         <div class="event-detail-tag" ng-repeat="tag in event.clean_tags" ng-if="tag!='default'">{{tag}}</div>
                     </div>

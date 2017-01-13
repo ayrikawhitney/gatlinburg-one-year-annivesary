@@ -3,7 +3,7 @@
         <span class="active-option-label option-label">I am...</span>
     </div>
     <div class="dropdown-options">
-        <h3 class="dropdown-text">Select groups you identify with</h3>
+        <h3 class="dropdown-text">Select what describes you</h3>
         <div class="dropdown-options-wrap">
             <div ng-repeat="option in options" on-repeat-finish class="dropdown-option-tag" ng-class="{'option-checked': option.checked}" ng-click="option_click(option)" track="{{ 'option-' + option.label}}">
                 {{ option.label }}
