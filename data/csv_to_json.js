@@ -40,7 +40,7 @@ module.exports = {
 
     fetch_asset: function (item, callback) {
         // strip asset
-        var asset = item.asset.replace(/^\s+|\s+$/g, ''),
+        var asset = item.asset.toString().replace(/^\s+|\s+$/g,''),
             _this = this;
         // validate integer
         if (parseInt(asset).toString() === asset) {
