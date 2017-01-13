@@ -36,8 +36,8 @@
     max-width: 700px;
 }
 .event-item-wrapper.negative {
-    background: #E82319;
-    color:white
+    background: #f27043;
+    color:white;
 }
 .event-item-wrapper.positive {
     background: #009BFF;
@@ -58,7 +58,7 @@
 }
 
 .event-item-wrapper.negative::before {
-    border-color: transparent #E82319 transparent transparent;
+    border-color: transparent #f27043 transparent transparent;
 }
 
 .event-item-wrapper.positive::before {
