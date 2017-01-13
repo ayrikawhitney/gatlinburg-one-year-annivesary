@@ -31,7 +31,6 @@
         };
     }])
 
-    //    TODO need to fix scrolling fixed fade background
     // see https://docs.angularjs.org/api/ng/filter/date for date formatting
     .controller('eventDetail', ['$scope', function ($scope) {
         var _this = this;
@@ -39,6 +38,15 @@
         $scope.close_click = function() {
             document.querySelector('body').classList.remove('noscroll');
             $scope.event = null;
+        };
+
+        // user clicks on white background
+        $scope.off_click = function(e) {
+            if (e.target.classList.contains('event-detail-wrap') ||
+                e.target.classList.contains('event-detail-content-container') ||
+                e.target.classList.contains('event-detail-content-container')) {
+                $scope.close_click();
+            }
         };
 
         $scope.set_sentiment = function(sentiment) {
