@@ -47,14 +47,11 @@
 }
 
 .event-detail-inner-wrap.event-detail-wrap-positive .event-detail-content-wrap {
-    background: #009BFF;
-    color: white;
+    /* background: #009BFF; */
+    /* color: white; */
 }
 
-.event-detail-inner-wrap.event-detail-wrap-negative .event-detail-content-wrap {
-    background: #f27043;
-    color: white;
-}
+.event-detail-inner-wrap.event-detail-wrap-negative .event-detail-content-wrap {}
 
 .event-detail-inner-wrap.event-detail-wrap-positive .event-detail-close-button, .event-detail-inner-wrap.event-detail-wrap-negative .event-detail-close-button {
     color: white;
@@ -153,7 +150,7 @@
 .event-detail-sentiment-reset {
     cursor: pointer;
     text-align: center;
-    /* padding: 20px; */
+    padding: 10px 0;
     text-decoration: underline;
 }
 
