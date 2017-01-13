@@ -38,6 +38,18 @@ module.exports = {
         return image;
     },
 
+    get_credit: function(asset_data) {
+        var credit = null;
+        for (var i=0; i<asset_data.attributes.length; i+=1) {
+            var attribute = asset_data.attributes[i];
+            if (attribute.name === 'credit') {
+                credit = attribute.value;
+                break;
+            }
+        }
+        return credit;
+    },
+
     fetch_asset: function (item, callback) {
         // strip asset
         var asset = item.asset.toString().replace(/^\s+|\s+$/g,''),
@@ -54,6 +66,7 @@ module.exports = {
                         image_url = _this.get_image(ratios);
                     if (image_url && image_url.indexOf('/-mm-/') !== -1) {
                         item.image = 'http://www.gannett-cdn.com' + image_url;
+                        item.credit = _this.get_credit(asset_data);
                     }
                     callback();
                 }

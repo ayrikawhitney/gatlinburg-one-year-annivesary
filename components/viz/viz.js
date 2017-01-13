@@ -16,7 +16,7 @@
             controller: 'viz',
             link: function ($scope, $element, $attr) {
                 var el = $element[0],
-                    app_name = 'thanks-obmama';
+                    app_name = 'thanks-obama';
                 if (window.Analytics) {
                     window.Analytics.setup(app_name, {
                         // page views are handled with route success

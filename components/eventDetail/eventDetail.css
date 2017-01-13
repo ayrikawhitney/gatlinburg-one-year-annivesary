@@ -209,3 +209,10 @@
 .event-detail-sub-head {
     font-weight: 400;
 }
+
+.event-detail-image-credit {
+    font-size: 0.8em;
+    opacity: 0.5;
+    padding: 0 20px;
+    margin: 7px 0 10px;
+}

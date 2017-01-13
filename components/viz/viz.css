@@ -50,3 +50,7 @@ body {
 
 .header-description {margin: 40px auto;font-size: 1.3rem;}
 
+.header-description > p {
+    margin: 20px 0;
+}
+

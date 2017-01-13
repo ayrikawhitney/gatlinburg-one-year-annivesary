@@ -34,7 +34,6 @@
             $timeline.get_events().then(function(events) {
                 $scope.events = events;
             });
-            // $timeline.sort_events($scope.descending !== undefined);
         };
 
         $scope.$on('events-change', function(e, events) {
@@ -57,7 +56,7 @@
     .service('$timeline', ['$rootScope', '$q', '$http', '$interval', function ($rootScope, $q, $http, $interval) {
 
 
-        var self = this,
+        var _this = this,
             is_fetching = false;
 
         this.events = [];
@@ -68,7 +67,7 @@
             $rootScope.$broadcast('events-change', this.get_filtered_events());
         };
 
-        this.sort_events = function(use_descending) {
+        this.sort_events = function(events, use_descending) {
             // ascending 1/1/2000 will sort ahead of 1/1/2001
             var ascending = function(a,b) {
                     if (a.date.getTime() < b.date.getTime())
@@ -86,7 +85,7 @@
                     return 0;
                 },
                 sorter = use_descending ? descending : ascending;
-            this.events.sort(sorter);
+            return events.sort(sorter);
         };
 
         this.add_filter = function(new_filter) {
@@ -142,18 +141,18 @@
                 //set default sentiment to null
                 event.sentiment = null;
             }
-            return events;
+            return this.sort_events(events, true);
         };
 
         this.get_filtered_events = function() {
-            return self.events.filter(function(event) {
+            return _this.events.filter(function(event) {
                 for (var i = 0; i < event.tags.length; i++) {
                     var eventTag = event.tags[i];
                     //if any event tags are present in the filters, return true
                     if (eventTag.indexOf('!') == 0) {
-                        return self.filters.indexOf(eventTag.substr(1)) == -1;
+                        return _this.filters.indexOf(eventTag.substr(1)) == -1;
                     }
-                    if (self.filters.indexOf(eventTag) > -1) {
+                    if (_this.filters.indexOf(eventTag) > -1) {
                         return true;
                     }
                     //check if eventTag is combo-tag, and check for BOTH
@@ -166,10 +165,10 @@
                             if (comboTag.indexOf('!') == 0) {
                                 //if result from previous combos is true, check for 'NOT' tag's prescence in current filters
                                 if (result == true) {
-                                    result = self.filters.indexOf(comboTag.substr(1)) < 0;
+                                    result = _this.filters.indexOf(comboTag.substr(1)) < 0;
                                 }
                             }
-                            else if (self.filters.indexOf(comboTag) < 0) {
+                            else if (_this.filters.indexOf(comboTag) < 0) {
                                 result = false;
                             }
                         }
@@ -188,10 +187,10 @@
             }
             // wait for data to get fetched
             else {
-                self.fetch('assets/data/events.json').then(function(events) {
-                    self.events = events;
+                _this.fetch('assets/data/events.json').then(function(events) {
+                    _this.events = events;
                     $rootScope.$broadcast('events_set', events);
-                    deferred.resolve(self.get_filtered_events());
+                    deferred.resolve(_this.get_filtered_events());
                 })
             }
             return deferred.promise;
@@ -207,7 +206,7 @@
                 }).then(function (response) {
                     is_fetching = false;
                     // sort data
-                    var events = self.generate_events(response);
+                    var events = _this.generate_events(response);
                     deferred.resolve(events);
                 }, function () {
                     console.warn('Unable to get data');
