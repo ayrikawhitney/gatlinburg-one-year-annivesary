@@ -112,6 +112,7 @@ gulp.task('update-asset-paths', function () {
             .pipe(gulp.dest(dist_path));
 });
 
+// TODO: NOT WORKING AS EXPECTED! updates facebook and analytics, need to get fiex
 gulp.task('update-paths', function () {
     return gulp.src(['./dist/index.html'])
         .pipe(assetpaths({

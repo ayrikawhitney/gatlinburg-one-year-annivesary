@@ -18,9 +18,6 @@
                 if (window.SharingTwitter) {
                     window.SharingTwitter.watch(el);
                 }
-                if (window.SharingFacebook) {
-                    window.SharingFacebook.watch(el);
-                }
                 if (window.SharingEmail) {
                     window.SharingEmail.watch(el);
                 }
@@ -32,7 +29,7 @@
     }])
 
     // see https://docs.angularjs.org/api/ng/filter/date for date formatting
-    .controller('eventDetail', ['$scope', function ($scope) {
+    .controller('eventDetail', ['$scope', '$element', '$timeout', function ($scope, $element, $timeout) {
         var _this = this;
 
         $scope.close_click = function() {
@@ -52,10 +49,15 @@
         $scope.set_sentiment = function(sentiment) {
             $scope.event.sentiment = sentiment;
             if (sentiment == 'positive') {
-                $scope.event.share_text = 'Thanks Obama 👍: ' + $scope.event.headline;
+                $scope.event.share_text = 'Thanks Obama: ' + $scope.event.headline;
             } else if (sentiment == 'negative') {
-                $scope.event.share_text = 'Thanks Obama 👎: ' + $scope.event.headline;
+                $scope.event.share_text = 'Thanks Obama: ' + $scope.event.headline;
             }
+            $timeout(function() {
+                if (window.SharingFacebook) {
+                    window.SharingFacebook.watch($element[0]);
+                }
+            });
         }
 
 
