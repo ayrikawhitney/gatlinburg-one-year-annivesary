@@ -1,7 +1,4 @@
-<div class="dropdown no-select" ng-class="{'active': open}" off-click='open = false'>
-    <div ng-click="open = !open" class="dropdown-button">
-        <span class="active-option-label option-label">I am...</span>
-    </div>
+<div class="dropdown no-select">
     <div class="dropdown-options">
         <h3 class="dropdown-text">Select what describes you</h3>
         <div class="dropdown-options-wrap">
@@ -9,6 +6,5 @@
                 {{ option.label }}
             </div>
         </div>
-        <div class="dropdown-go-button" ng-click="open = false">Go</div>
     </div>
 </div>
