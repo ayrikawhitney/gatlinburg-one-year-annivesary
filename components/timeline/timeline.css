@@ -107,6 +107,9 @@ time {
 .event-item-sentiment img {
     width: 100%;
 }
+.event-item-preview {
+    margin: 10px 0;
+}
 
 @media (min-width: 768px) {
     .timeline-line {

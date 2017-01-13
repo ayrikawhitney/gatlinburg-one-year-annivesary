@@ -23,7 +23,8 @@
                     <div class="event-detail-sharing-wrap" ng-class="{ 'sharing-active': event.sentiment }">
                     <h3 class="event-detail-sharing-text">Share your thanks:</h3>
                     <div class="share-buttons-container clearfix">
-                        <div track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
+                        <div ng-if="event.sentiment === 'negative'" share-image="http://www.gannett-cdn.com/experiments/usatoday/responsive/thanks-obama/assets/img/social-negative.jpg" track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
+                        <div ng-if="event.sentiment === 'positive'" share-image="http://www.gannett-cdn.com/experiments/usatoday/responsive/thanks-obama/assets/img/social-positive.jpg" track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
                         <div track="twitter-share" share-text="{{event.share_text}}" share-twitter class="icons-social-twitter share-btn-twitter share-btn"></div>
                     </div>
                 </div>

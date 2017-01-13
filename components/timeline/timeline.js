@@ -148,6 +148,7 @@
             return _this.events.filter(function(event) {
                 for (var i = 0; i < event.tags.length; i++) {
                     var eventTag = event.tags[i];
+                    event.preview = _this.truncate_html_text(event.blurb, 100);
                     //if any event tags are present in the filters, return true
                     if (eventTag.indexOf('!') == 0) {
                         return _this.filters.indexOf(eventTag.substr(1)) == -1;
@@ -194,6 +195,22 @@
                 })
             }
             return deferred.promise;
+        };
+
+        this.truncate_html_text = function(html, max) {
+            // create DOM element to remove markup from html
+            var div = document.createElement("div");
+                div.innerHTML = html;
+            // gets basic text
+            var text = div.textContent || div.innerText || "",
+                // limits words
+                truncated_text = text.substr(0, max);
+                // limited cut to full words
+                truncated_text = truncated_text.substr(0, Math.min(truncated_text.length, truncated_text.lastIndexOf(' ')));
+            if (truncated_text !== text) {
+                truncated_text += '...';
+            }
+            return truncated_text;
         };
 
         this.fetch = function(url) {
