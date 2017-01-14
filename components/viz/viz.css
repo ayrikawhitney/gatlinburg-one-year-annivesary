@@ -46,7 +46,11 @@ body {
     margin: 40px auto;
 }
 
-.header-description {margin: 40px auto;font-size: 1.3rem;}
+.header-description {
+    margin: 40px auto;
+    font-size: 1.3rem;
+    max-width: 700px;
+}
 
 .header-description > p {
     margin: 20px 0;
