@@ -97,27 +97,24 @@
     top: 20px;
 }
 
-.event-detail-sentiment-wrap {
-    display: flex;
-}
+.event-detail-sentiment-wrap {}
 
-/* TODO safari seems to be confused about the 50% width, renders incorrectly initially */
 .event-detail-sentiment-button {
-    color: white;
     cursor: pointer;
-    display: inline-block;
-    flex: none;
-    margin: 0;
-    text-align: center;
     width: 50%;
-    padding: 20px;
+    float: left;
+    height: 100px;
+    display: flex;
+     /* align horizontal */
+    align-items: center;
     transition: width 250ms ease;
 }
 
 .event-detail-sentiment-button-logo {
     display: block;
-    width: 90%;
-    max-width: 150px;
+    max-width: 190px;
+    width: 100%;
+    padding: 0 20px;
     margin: 0 auto;
 }
 
@@ -214,4 +211,10 @@
     opacity: 0.5;
     padding: 0 20px;
     margin: 7px 0 10px;
+}
+
+@media (min-width: 480px) {
+    .event-detail-sentiment-button {
+        height: 125px;
+    }
 }
