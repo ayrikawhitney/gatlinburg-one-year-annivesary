@@ -104,9 +104,8 @@
     width: 50%;
     float: left;
     height: 100px;
-    display: flex;
+    
      /* align horizontal */
-    align-items: center;
     transition: width 250ms ease;
 }
 
@@ -115,6 +114,9 @@
     max-width: 150px;
     width: 90%;
     margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .event-detail-sentiment-button-positive {
