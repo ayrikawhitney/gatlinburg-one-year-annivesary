@@ -107,6 +107,17 @@
             return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
         };
 
+        this.parse_date = function(input) {
+            console.log(input);
+            var parts = input.split('/'),
+                // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+                // Note: months are 0-based
+                // years are in the 2000's
+                date = new Date(parseInt(parts[2]), parseInt(parts[0])-1, parts[1]);
+            console.log(date);
+            return date;
+        };
+
         this.generate_events = function(response) {
             var events = response.data;
             // ensure order
@@ -118,7 +129,7 @@
             for (var i=0; i<events.length; i+=1) {
                 var event = events[i];
                 // dates are inserted on UTC time. Dates should not be converted to local time.
-                event.date = this.to_UTC_date(new Date(event.date));
+                event.date = this.to_UTC_date(this.parse_date(event.date));
                 event.id = i;
                 //split comma-seperated tags into an array
                 var split_tags = event.tags.split(';');
