@@ -50,8 +50,10 @@
             $scope.event.sentiment = sentiment;
             if (sentiment == 'positive') {
                 $scope.event.share_text = 'Thanks Obama: ' + $scope.event.headline;
+                $scope.event.share_text_twitter = 'Thanks Obama 👍 : ' + $scope.event.headline;
             } else if (sentiment == 'negative') {
                 $scope.event.share_text = 'Thanks Obama: ' + $scope.event.headline;
+                $scope.event.share_text_twitter = 'Thanks Obama 👎 : ' + $scope.event.headline;
             }
             $timeout(function() {
                 if (window.SharingFacebook) {

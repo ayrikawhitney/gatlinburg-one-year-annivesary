@@ -29,7 +29,7 @@
                     <div class="share-buttons-container clearfix">
                         <div ng-if="event.sentiment === 'negative'" share-image="assets/img/social-negative.jpg" track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
                         <div ng-if="event.sentiment === 'positive'" share-image="assets/img/social-positive.jpg" track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
-                        <div track="twitter-share" share-text="{{event.share_text}}" share-twitter class="icons-social-twitter share-btn-twitter share-btn"></div>
+                        <div track="twitter-share" share-text="{{event.share_text_twitter}}" share-twitter class="icons-social-twitter share-btn-twitter share-btn"></div>
                     </div>
                 </div>
                 <div class="event-detail-content" ng-if="event.tags.indexOf('default') === -1">
