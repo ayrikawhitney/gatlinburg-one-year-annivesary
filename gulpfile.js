@@ -6,7 +6,6 @@ const autoprefixer = require('gulp-autoprefixer');
 const del = require('del');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
-const assetpaths = require('gulp-assetpaths');
 const ftp = require('vinyl-ftp');
 const gutil = require('gulp-util');
 const runSequence = require('run-sequence');
@@ -18,7 +17,7 @@ const replace = require('gulp-replace');
 var project_name = 'thanks-obama';
 var path = 'experiments/usatoday/responsive/' + project_name;
 var cdn_path = '/17200/' + path;
-var cdn_url = 'http://www.gannett-cdn.com/' + path;
+var cdn_url = '//www.gannett-cdn.com/' + path;
 
 var js_files = [
     './bower_components/iphone-inline-video/dist/iphone-inline-video.browser.js',
@@ -112,15 +111,13 @@ gulp.task('update-asset-paths', function () {
             .pipe(gulp.dest(dist_path));
 });
 
-// TODO: NOT WORKING AS EXPECTED! updates facebook and analytics, need to get fiex
 gulp.task('update-paths', function () {
-    return gulp.src(['./dist/index.html'])
-        .pipe(assetpaths({
-            newDomain: cdn_url,
-            oldDomain: '/',
-            docRoot: dist_path,
-            filetypes: ['jpg', 'jpeg', 'png', 'ico', 'gif', 'js', 'css']
-        }))
+    //src=\"(?!\/\/|http).*?\"
+    gulp.src(['./dist/index.html'])
+        // ignore strings that start with "//" or "http"
+        .pipe(replace(/src="(?!\/\/|http|www)(.*)?"/g, 'src="' + cdn_url + '/$1"'))
+        // match href
+        .pipe(replace(/href="(?!\/\/|http|www)(.*)?"/g, 'href="' + cdn_url + '/$1"'))
         .pipe(gulp.dest(dist_path));
 });
 
