@@ -108,13 +108,11 @@
         };
 
         this.parse_date = function(input) {
-            console.log(input);
             var parts = input.split('/'),
                 // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
                 // Note: months are 0-based
                 // years are in the 2000's
                 date = new Date(parseInt(parts[2]), parseInt(parts[0])-1, parts[1]);
-            console.log(date);
             return date;
         };
 
