@@ -6,6 +6,7 @@
                 <time>{{ event.date | date:'yyyy' }}</time>
                 <div class="event-item-content">
                     <div class="event-item-title">{{ event.headline }}</div>
+                    <div class="event-item-image" ng-if="event.image"><img src="{{'assets/img/events/' + event.image | assetPath}}" alt=""></div>
                     <div class="event-item-preview">{{ event.preview }}</div>
                     <div class="event-item-footer">
                         <img class="event-item-footer-arrow" src="assets/img/arrow-down-grey.png" alt="open">

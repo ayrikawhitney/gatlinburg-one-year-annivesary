@@ -37,9 +37,9 @@ body {
     padding: 0 15px;
 }
 .header-title {
-    width:80%;
     max-width: 800px;
-    margin: 40px auto;
+    margin: 10px auto;
+    font-size: 28px;
 }
 
 .header-description {margin: 40px auto;font-size: 1.3rem;max-width: 800px;}
@@ -72,5 +72,49 @@ body {
 }
 .key-color.light {
     background: white;
+}
+
+.header-wrap {
+    position: relative;
+}
+
+.header-text-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5%;
+}
+
+.header-sub {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+@media(min-width: 800px) {
+    .header-text-wrap {
+        padding: 0;
+        position: absolute;
+        left: 40%;
+        color: white;
+        padding-right: 10%;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    .header-title {
+        font-size: 64px;
+        text-transform: uppercase;
+    }
+
+    .header-sub {
+        font-size: 28px;
+    }
+
+    .header-line {
+        clear: both;
+        display: inline-block;
+        background: white;
+        color: #3e3e3e;
+        padding: 5px 10px;
+    }
 }
 

@@ -109,7 +109,6 @@
         };
 
         this.parse_date = function(input) {
-            console.log(input);
             // var parts = input.split('/'),
                 // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
                 // Note: months are 0-based
@@ -206,7 +205,6 @@
                     _this.events = events;
                     $rootScope.$broadcast('events_set', events);
                     deferred.resolve(_this.get_filtered_events());
-                    console.log(_this.events);
                 })
             }
             return deferred.promise;
