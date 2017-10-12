@@ -1,8 +1,8 @@
 (function (angular) {
     'use strict';
 
-    angular.module('thanks-obama', [
-        'thanks-obama.viz'
+    angular.module('weinstein-timeline', [
+        'weinstein-timeline.viz'
     ])
 
     .config(['$locationProvider', function($locationProvider) {
@@ -17,7 +17,7 @@
             if (isDev) {
                 return input;
             } else {
-                return 'https://www.gannett-cdn.com/experiments/usatoday/2017/weinstein-timeline/' + input;
+                return 'https://www.gannett-cdn.com/experiments/usatoday/responsive/2017/weinstein-timeline/' + input;
             }
         }
     });

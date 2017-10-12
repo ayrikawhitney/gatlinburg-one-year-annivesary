@@ -1,4 +1,4 @@
-Thanks Obama
+Weinstein timeline
 ============
 
 ## Dependencies
@@ -20,8 +20,3 @@ To deploy to USA TODAY's CDN, run
 npm run deploy
 ```
 
-## Content
-convert content file (thanks_obama_content.csv) by running:
-```
-npm run csvtojson
-```

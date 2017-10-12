@@ -1,11 +1,11 @@
 (function (angular) {
     'use strict';
 
-    angular.module('thanks-obama.viz', [
+    angular.module('weinstein-timeline.viz', [
         'resizer',
-        'thanks-obama.timeline',
-        'thanks-obama.dropdown',
-        'thanks-obama.eventDetail'
+        'weinstein-timeline.timeline',
+        'weinstein-timeline.dropdown',
+        'weinstein-timeline.eventDetail'
     ])
 
     .directive('viz', ['$timeout', function ($timeout) {
@@ -16,7 +16,7 @@
             controller: 'viz',
             link: function ($scope, $element, $attr) {
                 var el = $element[0],
-                    app_name = 'thanks-obama';
+                    app_name = 'weinstein-timeline';
                 if (window.Analytics) {
                     window.Analytics.setup(app_name, {
                         // page views are handled with route success

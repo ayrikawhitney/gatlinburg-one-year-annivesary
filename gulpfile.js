@@ -14,7 +14,7 @@ const fs = require('fs');
 const addsrc = require('gulp-add-src');
 const replace = require('gulp-replace');
 
-var project_name = 'thanks-obama';
+var project_name = 'weinstein-timeline';
 var path = 'experiments/usatoday/responsive/' + project_name;
 var cdn_path = '/17200/' + path;
 var cdn_url = '//www.gannett-cdn.com/' + path;

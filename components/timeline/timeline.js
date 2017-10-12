@@ -1,7 +1,8 @@
 (function (angular) {
     'use strict';
 
-    angular.module('thanks-obama.timeline', [
+    angular.module('weinstein-timeline.timeline', [
+        'weinstein-timeline',
         'utils'
     ])
 
@@ -53,7 +54,7 @@
 
     }])
 
-    .service('$timeline', ['$rootScope', '$q', '$http', '$interval', function ($rootScope, $q, $http, $interval) {
+    .service('$timeline', ['$rootScope', '$q', '$http', '$interval', 'assetPathFilter', function ($rootScope, $q, $http, $interval, assetPathFilter) {
 
 
         var _this = this,
@@ -201,7 +202,7 @@
             }
             // wait for data to get fetched
             else {
-                _this.fetch('assets/data/events.json').then(function(events) {
+                _this.fetch(assetPathFilter('assets/data/events.json')).then(function(events) {
                     _this.events = events;
                     $rootScope.$broadcast('events_set', events);
                     deferred.resolve(_this.get_filtered_events());

@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    angular.module('thanks-obama.dropdown', [
+    angular.module('weinstein-timeline.dropdown', [
         'utils'
     ])
 

@@ -39,13 +39,15 @@ body {
 .header-title {
     max-width: 800px;
     margin: 10px auto;
-    font-size: 28px;
+    font-size: 36px;
 }
 
 .header-description {margin: 40px auto;font-size: 1.3rem;max-width: 800px;}
 
 .header-description > p {
-    margin: 20px 0;
+    margin: 40px 0;
+    font-family: Georgia, serif;
+    line-height: 1.7;
 }
 
 .intro-key {
@@ -89,6 +91,10 @@ body {
     font-size: 18px;
 }
 
+.header-image-large {
+    display: none;
+}
+
 @media(min-width: 800px) {
     .header-text-wrap {
         padding: 0;
@@ -115,6 +121,18 @@ body {
         background: white;
         color: #3e3e3e;
         padding: 5px 10px;
+    }
+
+    .header-description > p {
+        margin: 80px auto;
+    }
+
+    .header-image-large {
+        display: block;
+    }
+
+    .header-image-small {
+        display: none;
     }
 }
 
