@@ -61,7 +61,7 @@
 
         this.events = [];
 
-        this.filters = ['default'];
+        this.filters = [];
 
         this.render = function() {
             $rootScope.$broadcast('events-change', this.get_filtered_events());
@@ -85,6 +85,7 @@
                     return 0;
                 },
                 sorter = use_descending ? descending : ascending;
+                console.log(use_descending);
             return events.sort(sorter);
         };
 
@@ -108,11 +109,13 @@
         };
 
         this.parse_date = function(input) {
-            var parts = input.split('/'),
+            console.log(input);
+            // var parts = input.split('/'),
                 // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
                 // Note: months are 0-based
                 // years are in the 2000's
-                date = new Date(parseInt(parts[2]), parseInt(parts[0])-1, parts[1]);
+                // date = new Date(parseInt(parts[2]), parseInt(parts[0])-1, parts[1]);
+                var date = new Date(input, 0, 1);
             return date;
         };
 
@@ -130,62 +133,64 @@
                 event.date = this.to_UTC_date(this.parse_date(event.date));
                 event.id = i;
                 //split comma-seperated tags into an array
-                var split_tags = event.tags.split(';');
+                // var split_tags = event.tags.split(';');
                 event.tags = [];
                 event.clean_tags = [];
-                for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
-                    var tag = split_tags[tag_i];
-                    event.tags.push(tag.trim());
-                    if (tag.indexOf('&') >= 0) {
-                        var comboTagArray = tag.split('&');
-                        for (var combo_i = 0; combo_i < comboTagArray.length; combo_i++) {
-                            if (comboTagArray[combo_i].indexOf('!') != 0) {
-                                event.clean_tags.push(comboTagArray[combo_i].trim())
-                            }
-                        }
-                    } else if (tag.trim().indexOf('!') != 0){
-                        event.clean_tags.push(tag.trim());
-                    }
-                }
+                // for (var tag_i = 0; tag_i < split_tags.length; tag_i++) {
+                //     var tag = split_tags[tag_i];
+                //     event.tags.push(tag.trim());
+                //     if (tag.indexOf('&') >= 0) {
+                //         var comboTagArray = tag.split('&');
+                //         for (var combo_i = 0; combo_i < comboTagArray.length; combo_i++) {
+                //             if (comboTagArray[combo_i].indexOf('!') != 0) {
+                //                 event.clean_tags.push(comboTagArray[combo_i].trim())
+                //             }
+                //         }
+                //     } else if (tag.trim().indexOf('!') != 0){
+                //         event.clean_tags.push(tag.trim());
+                //     }
+                // }
                 //set default sentiment to null
                 event.sentiment = null;
             }
-            return this.sort_events(events, true);
+            return this.sort_events(events, false);
         };
 
         this.get_filtered_events = function() {
-            return _this.events.filter(function(event) {
-                for (var i = 0; i < event.tags.length; i++) {
-                    var eventTag = event.tags[i];
-                    event.preview = _this.truncate_html_text(event.blurb, 100);
-                    //if any event tags are present in the filters, return true
-                    if (eventTag.indexOf('!') == 0) {
-                        return _this.filters.indexOf(eventTag.substr(1)) == -1;
-                    }
-                    if (_this.filters.indexOf(eventTag) > -1) {
-                        return true;
-                    }
-                    //check if eventTag is combo-tag, and check for BOTH
-                    if (eventTag.indexOf('&') > -1) {
-                        var comboTagArray = eventTag.split('&');
-                        var result = true;
-                        for (var tag_i = 0; tag_i < comboTagArray.length; tag_i++) {
-                            var comboTag = comboTagArray[tag_i];
-                            //check to see if tag is a 'NOT' tag
-                            if (comboTag.indexOf('!') == 0) {
-                                //if result from previous combos is true, check for 'NOT' tag's prescence in current filters
-                                if (result == true) {
-                                    result = _this.filters.indexOf(comboTag.substr(1)) < 0;
-                                }
-                            }
-                            else if (_this.filters.indexOf(comboTag) < 0) {
-                                result = false;
-                            }
-                        }
-                        return result;
-                    }
-                }
-                return false;
+            // return _this.events;
+            return _this.events.map(function(event) {
+                event.preview = _this.truncate_html_text(event.blurb, 100);
+                return event;
+                // for (var i = 0; i < event.tags.length; i++) {
+                //     var eventTag = event.tags[i];
+                //     //if any event tags are present in the filters, return true
+                //     if (eventTag.indexOf('!') == 0) {
+                //         return _this.filters.indexOf(eventTag.substr(1)) == -1;
+                //     }
+                //     if (_this.filters.indexOf(eventTag) > -1) {
+                //         return true;
+                //     }
+                //     //check if eventTag is combo-tag, and check for BOTH
+                //     if (eventTag.indexOf('&') > -1) {
+                //         var comboTagArray = eventTag.split('&');
+                //         var result = true;
+                //         for (var tag_i = 0; tag_i < comboTagArray.length; tag_i++) {
+                //             var comboTag = comboTagArray[tag_i];
+                //             //check to see if tag is a 'NOT' tag
+                //             if (comboTag.indexOf('!') == 0) {
+                //                 //if result from previous combos is true, check for 'NOT' tag's prescence in current filters
+                //                 if (result == true) {
+                //                     result = _this.filters.indexOf(comboTag.substr(1)) < 0;
+                //                 }
+                //             }
+                //             else if (_this.filters.indexOf(comboTag) < 0) {
+                //                 result = false;
+                //             }
+                //         }
+                //         return result;
+                //     }
+                // }
+                // return false;
             });
         };
 
@@ -201,6 +206,7 @@
                     _this.events = events;
                     $rootScope.$broadcast('events_set', events);
                     deferred.resolve(_this.get_filtered_events());
+                    console.log(_this.events);
                 })
             }
             return deferred.promise;

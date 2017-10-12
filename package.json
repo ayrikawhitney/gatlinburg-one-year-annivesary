@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install",
-    "build": "gulp build",
-    "deploy": "gulp deploy",
+    "build": "gulp build && cp -r assets dist/",
+    "deploy": "npm run build && cd dist && gsutil cp -r ./ gs://experiments-www-gannett-cdn-com/experiments/usatoday/responsive/2017/weinstein-timeline && npm run bust-cache",
     "deploy-assets": "gulp deploy-assets",
     "start": "lite-server",
     "compile": "babel charts --out-dir components/charts",
     "compile-watch": "babel charts --watch --out-dir components/charts",
-    "csvtojson": "node data/process.js"
+    "csvtojson": "node data/process.js",
+    "bust-cache": "curl -X PURGE https://www.gannett-cdn.com/experiments/usatoday/responsive/2017/weinstein-timeline/index.html && curl -X PURGE https://www.gannett-cdn.com/experiments/usatoday/responsive/2017/weinstein-timeline/assets/data/events.json && curl -X PURGE https://www.gannett-cdn.com/experiments/usatoday/responsive/2017/weinstein-timeline/app.min.js && curl -X PURGE https://www.gannett-cdn.com/experiments/usatoday/responsive/2017/weinstein-timeline/styles.min.css"
   },
   "repository": {
     "type": "git",

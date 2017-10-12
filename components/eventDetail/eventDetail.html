@@ -4,7 +4,7 @@
             <div class="event-detail-content-wrap">
                 <div class="event-detail-content">
                     <div class="event-detail-close-button" ng-click="close_click()">Close</div>
-                    <time>{{ event.date | date:mediumDate }}</time>
+                    <time>{{ event.date | date:'yyyy' }}</time>
                     <h2 class="event-detail-headline">{{event.headline}}</h2>
                     <h3 class="event-detail-sub-head">{{event.sub_headline}}</h3>
                 </div>
@@ -14,29 +14,6 @@
                 </div>
                 <div class="event-detail-content" ng-if="event.blurb">
                     <p class="event-detail-text" ng-bind-html="event.blurb | safeHtml"></p>
-                </div>
-                <div class="event-detail-sentiment-wrap clearfix">
-                    <div class="event-detail-sentiment-button event-detail-sentiment-button-positive" ng-click="set_sentiment('positive')" track="btn-sentiment-positive">
-                        <img class="event-detail-sentiment-button-logo" src="assets/img/logo-positive-white.png" alt="Thanks Obama (positive)">
-                    </div>
-                    <div class="event-detail-sentiment-button event-detail-sentiment-button-negative" ng-click="set_sentiment('negative')" track="btn-sentiment-negative">
-                        <img class="event-detail-sentiment-button-logo" src="assets/img/logo-negative-white.png" alt="Thanks Obama (negative)">
-                    </div>
-                </div>
-                    <div class="event-detail-sentiment-reset" ng-click="set_sentiment(null)" ng-if="event.sentiment">Change</div>
-                    <div class="event-detail-sharing-wrap" ng-class="{ 'sharing-active': event.sentiment }">
-                    <h3 class="event-detail-sharing-text">Share your thanks:</h3>
-                    <div class="share-buttons-container clearfix">
-                        <div ng-if="event.sentiment === 'negative'" share-image="assets/img/social-negative.jpg" track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
-                        <div ng-if="event.sentiment === 'positive'" share-image="assets/img/social-positive.jpg" track="facebook-share" share-text="{{event.share_text}}" share-facebook class="icons-social-facebook share-btn-facebook share-btn"></div>
-                        <div track="twitter-share" share-text="{{event.share_text_twitter}}" share-twitter class="icons-social-twitter share-btn-twitter share-btn"></div>
-                    </div>
-                </div>
-                <div class="event-detail-content" ng-if="event.tags.indexOf('default') === -1">
-                    <h3 class="event-detail-tag-text">Affected descriptors:</h3>
-                    <div class="event-detail-tag-wrap">
-                        <div class="event-detail-tag" ng-repeat="tag in event.clean_tags" ng-if="tag!='default'">{{tag}}</div>
-                    </div>
                 </div>
             </div>
         </div>

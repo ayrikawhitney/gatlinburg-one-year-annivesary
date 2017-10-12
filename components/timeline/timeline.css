@@ -35,6 +35,11 @@
     margin-left: 51px;
     max-width: 700px;
 }
+
+.event-item-wrapper.career-milestone {
+    background: rgb(50,50,50);
+    color: white;
+}
 .event-item-wrapper.negative {
     border: 1px solid #f27043;
 }
@@ -121,35 +126,28 @@ time {
         width: calc(50% - 60px);
     }
     /* left event */
-    .event-item:nth-child(even) .event-item-wrapper {
+    .event-item .event-item-wrapper.career-milestone {
         margin-left: 20px;
     }
     /* left event arrow */
-    .event-item:nth-child(even) .event-item-wrapper::before {
+    .event-item .event-item-wrapper.career-milestone::before {
         border-width: 8px 0 8px 12px;
         border-color: transparent transparent transparent #bcbcbc;
         left: inherit;
         right: -12px;
     }
-    .event-item:nth-child(even) .event-item-wrapper.negative::before {
-        border-color: transparent transparent transparent #E82319;
-    }
-
-    .event-item:nth-child(even) .event-item-wrapper.positive::before {
-        border-color: transparent transparent transparent #009BFF;
-    }
     /* right event dot */
-    .event-item:nth-child(odd) .event-item-wrapper::after {
+    .event-item .event-item-wrapper.harrasment-incident::after {
         left: -46px;
     }
     /* left event dot */
-    .event-item:nth-child(even) .event-item-wrapper::after {
+    .event-item .event-item-wrapper.career-milestone::after {
         left: inherit;
         right: -46px;
     }
 
     /* right event */
-    .event-item:nth-child(odd) .event-item-wrapper {
+    .event-item .event-item-wrapper.harrasment-incident {
         margin-left: calc(50% + 40px);
     }
 }
