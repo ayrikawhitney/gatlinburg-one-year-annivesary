@@ -28,6 +28,15 @@
                     //     window.Tracker.track(el);
                     // }
                 }
+                if (window.SharingTwitter) {
+                    window.SharingTwitter.watch(el);
+                }
+                if (window.SharingFacebook) {
+                    window.SharingFacebook.watch($element[0]);
+                }
+                if (window.Tracker) {
+                    window.Tracker.track(el);
+                }
                 // if (window.Ads) {
                 //     // create new ads. Pass in app name.
                 //     new window.Ads(app_name);
