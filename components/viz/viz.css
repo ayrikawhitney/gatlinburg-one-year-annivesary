@@ -95,6 +95,17 @@ body {
     display: none;
 }
 
+.credit-wrap {
+    border-top: solid 1px #bcbcbc;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+
+.credit-line strong {
+    font-weight: 600;
+    font-family: 'Futura Today', Arial, sans-serif;
+}
+
 @media(min-width: 800px) {
     .header-text-wrap {
         padding: 0;

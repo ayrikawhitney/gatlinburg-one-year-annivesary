@@ -86,7 +86,6 @@
                     return 0;
                 },
                 sorter = use_descending ? descending : ascending;
-                console.log(use_descending);
             return events.sort(sorter);
         };
 
@@ -123,8 +122,21 @@
             var events = response.data;
             // ensure order
             events = events.sort(function(a, b) {
+                a.ordering = parseInt(a.ordering);
+                b.ordering = parseInt(b.ordering);
+
                 if(a.date < b.date) return -1;
                 if(a.date > b.date) return 1;
+                if(a.date == b.date) {
+                    if(a.ordering < b.ordering) {
+                        return -1;
+                    }
+                    if(a.ordering > b.ordering) {
+                        return 1;
+                    }
+                }
+
+                return 0;
             });
             // create date objects
             for (var i=0; i<events.length; i+=1) {
@@ -153,7 +165,8 @@
                 //set default sentiment to null
                 event.sentiment = null;
             }
-            return this.sort_events(events, false);
+            // return this.sort_events(events, false);
+            return events;
         };
 
         this.get_filtered_events = function() {
